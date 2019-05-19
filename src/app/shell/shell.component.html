@@ -1,0 +1,89 @@
+<div fxFlex>
+  <mat-sidenav-container fxFill>
+    <mat-sidenav #sidenav class="quantum-sidenav" [mode]="isMobile ? 'over' : 'side'" [opened]="!isMobile" [disableClose]="!isMobile">
+      <mat-toolbar>
+        <span style="font-weight: 200">Quantum</span><span>Mirror</span>
+        <!-- <div fxFlex></div>
+        <div>
+          <button mat-icon-button [matMenuTriggerFor]="languageMenu">
+            <mat-icon>language</mat-icon>
+          </button>
+          <mat-menu #languageMenu="matMenu">
+            <button mat-menu-item *ngFor="let language of languages" (click)="setLanguage(language)">
+              {{language}}
+            </button>
+          </mat-menu>
+        </div> -->
+      </mat-toolbar>
+      <nav>
+        <mat-list>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/dashboard" routerLinkActive="active" (click)="isMobile && sidenav.close()" fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon>dashboard</mat-icon>
+            <span translate>Dashboard</span>
+          </a>
+          <!-- <mat-divider></mat-divider> -->
+          <a mat-list-item routerLink="/about" routerLinkActive="active" (click)="isMobile && sidenav.close()">
+            <mat-icon>question_answer</mat-icon>
+            <span translate>About</span>
+          </a>
+          <!-- <mat-divider></mat-divider> -->
+        </mat-list>
+      </nav>
+    </mat-sidenav>
+    <mat-sidenav-content class="quantum-background">
+      <mat-toolbar class="quantum-header">
+        <div fxLayoutAlign="start center">
+          <button mat-icon-button (click)="sidenav.toggle()" fxHide.gt-sm>
+            <mat-icon>menu</mat-icon>
+          </button>
+          <h1>{{title}}</h1>
+        </div>
+        <span fxFlex></span>
+        <div>
+          <button mat-icon-button (click)="toogleFullScreen()" fxShow="false" fxShow.gt-xs>
+            <mat-icon *ngIf="!isFullScreen">fullscreen</mat-icon>
+            <mat-icon *ngIf="isFullScreen">fullscreen_exit</mat-icon>
+          </button>
+        </div>
+        <div>
+          <button mat-icon-button [matMenuTriggerFor]="themeMenu" fxShow="false" fxShow.gt-xs>
+            <mat-icon>format_paint</mat-icon>
+          </button>
+          <mat-menu #themeMenu="matMenu">
+            <button mat-menu-item *ngFor="let theme of themes" (click)="toggleTheme(theme)">
+              {{theme}}
+            </button>
+          </mat-menu>
+        </div>
+        <div>
+          <button mat-icon-button [matMenuTriggerFor]="languageMenu">
+            <mat-icon>language</mat-icon>
+          </button>
+          <mat-menu #languageMenu="matMenu">
+            <button mat-menu-item *ngFor="let language of languages" (click)="setLanguage(language)">
+              {{language}}
+            </button>
+          </mat-menu>
+        </div>
+        <div>
+          <button mat-icon-button [matMenuTriggerFor]="userMenu">
+            <mat-icon>person</mat-icon>
+          </button>
+          <mat-menu #userMenu="matMenu">
+            <mat-list>
+              <mat-list-item>
+                <span translate>Logged in as</span>&nbsp;<b>{{username}}</b>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+            </mat-list>
+            <button mat-menu-item (click)="logout()" translate>Logout</button>
+          </mat-menu>
+        </div>
+      </mat-toolbar>
+      <div class="mat-container">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

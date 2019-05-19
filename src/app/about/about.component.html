@@ -1,0 +1,330 @@
+<div fxFlex>
+  <mat-card>
+    <p>
+      <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo" />
+    </p>
+    <mat-card-content>
+      <article fxLayout="column" style="padding-bottom: 10px">
+        <mat-card>
+          <mat-card-content fxLayout="column">
+            <h3>Raised Buttons</h3>
+            <div fxLayout="row wrap" fxLayoutGap="20px">
+              <button mat-raised-button>Basic</button>
+              <button mat-raised-button color="primary">Primary</button>
+              <button mat-raised-button color="accent">Accent</button>
+              <button mat-raised-button color="warn">Warn</button>
+              <button mat-raised-button disabled>Disabled</button>
+              <button mat-raised-button class="back">Back (custom)</button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-card-header>
+            <img mat-card-avatar class="example-header-image" />
+            <mat-card-title>Shiba Inu</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image style="height: 200px;" src="https://www.tinygraphs.com/labs/isogrids/banner/gradient" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>
+              The Shiba Inu is
+              <a href="">the smallest</a> of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very
+              well with
+              <a href="">mountainous terrain</a>, the Shiba Inu was originally bred for hunting.
+              The Shiba Inu is
+              <a href="">the smallest</a> of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very
+              well with
+              <a href="">mountainous terrain</a>, the Shiba Inu was originally bred for hunting.
+              The Shiba Inu is
+              <a href="">the smallest</a> of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very
+              well with
+              <a href="">mountainous terrain</a>, the Shiba Inu was originally bred for hunting.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
+
+        <mat-card>
+          <mat-card-content>
+            <h2>Basic Buttons</h2>
+            <div fxLayout="row wrap" fxLayoutGap="10px">
+              <button mat-button>Basic</button>
+              <button mat-button color="primary">Primary</button>
+              <button mat-button color="accent">Accent</button>
+              <button mat-button color="warn">Warn</button>
+              <button mat-button disabled>Disabled</button>
+              <a mat-button routerLink=".">Link</a>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card>
+          <mat-card-content>
+            <mat-tab-group>
+              <mat-tab label="First"> Content 1 </mat-tab>
+              <mat-tab label="Second"> Content 2 </mat-tab>
+              <mat-tab label="Third"> Content 3 </mat-tab>
+            </mat-tab-group>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card>
+          <mat-card-content>
+            <p>
+
+              <mat-form-field appearance="legacy">
+                <mat-label>Legacy form field</mat-label>
+                <input matInput placeholder="Placeholder">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field appearance="standard">
+                <mat-label>Standard form field</mat-label>
+                <input matInput placeholder="Placeholder">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field appearance="fill">
+                <mat-label>Fill form field</mat-label>
+                <input matInput placeholder="Placeholder">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field appearance="outline">
+                <mat-label>Outline form field</mat-label>
+                <input matInput placeholder="Placeholder">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </p>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="mat-card-accent">
+          <mat-card-content>
+            <h2>Warning</h2>
+            <p>System is malfunctioning </p>
+            <div fxLayout="row wrap" fxLayoutGap="10px">
+              <button mat-fab>Basic</button>
+              <button mat-fab color="primary">Primary</button>
+              <button mat-fab color="accent">Accent</button>
+              <button mat-fab color="warn">Warn</button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="mat-card-warn">
+          <mat-card-content>
+            <h2>Error</h2>
+            <p>Connection problem.. try again soon </p>
+            <div fxLayout="row wrap" fxLayoutGap="10px">
+              <button mat-fab>Basic</button>
+              <button mat-fab color="primary">Primary</button>
+              <button mat-fab color="accent">Accent</button>
+              <button mat-fab color="warn">Warn</button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card>
+          <mat-card-content>
+            <h3>Fab Buttons</h3>
+            <div fxLayout="row wrap" fxLayoutGap="10px">
+              <button mat-fab>Basic</button>
+              <button mat-fab color="primary">Primary</button>
+              <button mat-fab color="accent">Accent</button>
+              <button mat-fab color="warn">Warn</button>
+              <button mat-fab disabled>Disabled</button>
+              <button mat-fab>
+                <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+              </button>
+              <a mat-fab routerLink=".">Link</a>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-card-content>
+            <h3>Mini Fab Buttons</h3>
+            <div fxLayout="row wrap" fxLayoutGap="10px">
+              <button mat-mini-fab>Basic</button>
+              <button mat-mini-fab color="primary">Primary</button>
+              <button mat-mini-fab color="accent">Accent</button>
+              <button mat-mini-fab color="warn">Warn</button>
+              <button mat-mini-fab disabled>Disabled</button>
+              <button mat-mini-fab>
+                <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+              </button>
+              <a mat-mini-fab routerLink=".">Link</a>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-card-content>
+            <mat-list>
+              <h3 mat-subheader>Folders</h3>
+              <mat-list-item *ngFor="let folder of folders">
+                <img mat-card-avatar class="example-header-image" />
+                <h4 mat-line>{{folder.name}}</h4>
+                <p mat-line> {{folder.updated | date}} </p>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <h3 mat-subheader>Notes</h3>
+              <mat-list-item *ngFor="let note of notes">
+                <mat-icon mat-list-icon>note</mat-icon>
+                <h4 mat-line>{{note.name}}</h4>
+                <p mat-line> {{note.updated | date}} </p>
+              </mat-list-item>
+            </mat-list>
+
+          </mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-card-content>
+            <h3>Icon Buttons</h3>
+            <div fxLayout="row wrap" fxLayoutGap="10px">
+              <button mat-icon-button>
+                <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+              </button>
+              <button mat-icon-button color="primary">
+                <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+              </button>
+              <button mat-icon-button color="accent">
+                <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+              </button>
+              <button mat-icon-button color="warn">
+                <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+              </button>
+              <button mat-icon-button disabled>
+                <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-card-content>
+            <h3>Chips</h3>
+            <div fxLayout="row wrap" fxLayoutGap="10px">
+              <mat-chip-list>
+                <mat-chip>One fish</mat-chip>
+                <mat-chip>Two fish</mat-chip>
+                <mat-chip color="primary" selected="true">Primary fish</mat-chip>
+                <mat-chip color="accent" selected="true">Accent fish</mat-chip>
+              </mat-chip-list>
+
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-card-content>
+            <h2 class="example-h2">Checkbox configuration</h2>
+            <section class="example-section">
+              <mat-checkbox class="example-margin" [(ngModel)]="checked">Checked</mat-checkbox>
+              <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">Indeterminate</mat-checkbox>
+            </section>
+
+            <section class="example-section">
+              <label class="example-margin">Align:</label>
+              <mat-radio-group [(ngModel)]="align">
+                <mat-radio-button class="example-margin" value="start">Start</mat-radio-button>
+                <mat-radio-button class="example-margin" value="end">End</mat-radio-button>
+              </mat-radio-group>
+            </section>
+
+            <section class="example-section">
+              <mat-checkbox class="example-margin" [(ngModel)]="disabled">Disabled</mat-checkbox>
+            </section>
+            <h2 class="example-h2">Result</h2>
+
+            <section class="example-section">
+              <mat-checkbox class="example-margin" [(ngModel)]="checked" [(indeterminate)]="indeterminate" [disabled]="disabled">
+                I'm a checkbox
+              </mat-checkbox>
+            </section>
+
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-card-content>
+            <p>
+
+              <span matBadge="4" matBadgeOverlap="false">Text with a badge</span>
+            </p>
+
+            <p>
+              Button with a badge on the left
+              <button mat-raised-button color="primary" matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+                Action
+              </button>
+            </p>
+
+            <p>
+              Icon with a badge
+              <mat-icon matBadge="15" matBadgeColor="warn">home</mat-icon>
+            </p>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card>
+          <mat-card-content>
+            <h2 class="example-h2">Progress spinner configuration</h2>
+            <section class="example-section">
+              <label class="example-margin">Color:</label>
+              <mat-radio-group [(ngModel)]="color">
+                <mat-radio-button class="example-margin" value="primary">
+                  Primary
+                </mat-radio-button>
+                <mat-radio-button class="example-margin" value="accent">
+                  Accent
+                </mat-radio-button>
+                <mat-radio-button class="example-margin" value="warn">
+                  Warn
+                </mat-radio-button>
+              </mat-radio-group>
+            </section>
+
+            <section class="example-section">
+              <label class="example-margin">Mode:</label>
+              <mat-radio-group [(ngModel)]="mode">
+                <mat-radio-button class="example-margin" value="determinate">
+                  Determinate
+                </mat-radio-button>
+                <mat-radio-button class="example-margin" value="indeterminate">
+                  Indeterminate
+                </mat-radio-button>
+              </mat-radio-group>
+            </section>
+
+            <section class="example-section" *ngIf="mode == 'determinate'">
+              <label class="example-margin">Progress:</label>
+              <mat-slider class="example-margin" [(ngModel)]="value"></mat-slider>
+            </section>
+          </mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-card-content>
+            <h2 class="example-h2">Result</h2>
+
+            <mat-progress-spinner class="example-margin" [color]="color" [mode]="mode" [value]="value">
+            </mat-progress-spinner>
+          </mat-card-content>
+        </mat-card>
+      </article>
+
+    </mat-card-content>
+  </mat-card>
+</div>

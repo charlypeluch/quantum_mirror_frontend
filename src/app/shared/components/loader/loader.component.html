@@ -1,0 +1,16 @@
+<!-- <div class="loading-overlay" [hidden]="!isLoading">
+  <mat-progress-bar mode="indeterminate" value="40" color="accent"></mat-progress-bar>
+</div>
+<div [hidden]="!isLoading">
+  <mat-progress-spinner mode="indeterminate" [strokeWidth]="2" [diameter]="32 * size"></mat-progress-spinner>
+  <span class="message">{{message}}</span>
+</div> -->
+<div class="loader-container">
+  <div *ngIf="isLoadingNetwork | async" class="loader-network-overlay">
+    <mat-progress-bar [mode]="mode" [value]="value" [color]="color"></mat-progress-bar>
+  </div>
+  <div *ngIf="isLoadingNavigation | async" class="loader-navigation-overlay">
+    <mat-progress-spinner [mode]="mode" [strokeWidth]="3" [diameter]="32 * size" [color]="color"></mat-progress-spinner>
+    <span>{{ message }}</span>
+  </div>
+</div>

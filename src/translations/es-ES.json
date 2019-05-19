@@ -1,0 +1,18 @@
+{
+  "APP_NAME": "Quantum Mirror",
+  "About": "Sobre",
+  "Hello world !": "Hola Mundo!",
+  "Dashboard": "Dashboard",
+  "Logged in as": "Logueado como",
+  "Login": "Acceder",
+  "Logout": "Salir",
+  "Register": "Registrar",
+  "Password": "Contraseña",
+  "Confirm password": "Confirmar contraseña",
+  "Password is required": "Contraseña es requerida",
+  "Username": "Usuario",
+  "Username is required": "Usuario es requerido",
+  "Username or password incorrect.": "Usuario o contraseña son incorrectos",
+  "Remember me": "Recordarme",
+  "Version": "Versión"
+}

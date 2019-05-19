@@ -1,0 +1,10 @@
+@import "src/theme/theme-variables";
+
+.register-container,
+.mat-form-field {
+  width: 100%;
+}
+
+.register-error {
+  color: mat-color($app-warn);
+}

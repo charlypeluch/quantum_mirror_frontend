@@ -1,0 +1,29 @@
+{
+  "generator-ngx-rocket": {
+    "version": "6.0.2",
+    "props": {
+      "location": "path",
+      "appName": "QuantumMirror",
+      "target": [
+        "web"
+      ],
+      "pwa": true,
+      "ui": "material",
+      "layout": "side-menu",
+      "auth": true,
+      "lazy": true,
+      "angulartics": false,
+      "tools": [
+        "compodoc"
+      ],
+      "utility": [
+        "lodash",
+        "moment"
+      ],
+      "projectName": "quantum-mirror",
+      "packageManager": "npm",
+      "mobile": [],
+      "desktop": []
+    }
+  }
+}
