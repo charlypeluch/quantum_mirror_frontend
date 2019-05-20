@@ -285,3 +285,6 @@ $quantum-theme: mat-light-theme(
     font-weight: 500;
   }
 }
+.mat-menu-panel .mat-menu-content {
+  padding: 0px !important;
+}
