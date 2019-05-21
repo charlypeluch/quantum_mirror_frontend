@@ -7,11 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./access.component.scss']
 })
 export class AccessComponent implements OnInit {
-  navLinks: any[];
+  navigationLinks: any[];
   activeLinkIndex = -1;
 
   constructor(private router: Router) {
-    this.navLinks = [
+    this.navigationLinks = [
         {
             label: 'Login',
             link: './login',
@@ -26,7 +26,7 @@ export class AccessComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.events.subscribe((res) => {
-        this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => tab.link === '.' + this.router.url));
+        this.activeLinkIndex = this.navigationLinks.indexOf(this.navigationLinks.find(tab => tab.link === '.' + this.router.url));
     });
   }
 }

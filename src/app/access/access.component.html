@@ -9,7 +9,7 @@
       <mat-card-content>
         <nav mat-tab-nav-bar>
           <a mat-tab-link
-          *ngFor="let link of navLinks"
+          *ngFor="let link of navigationLinks"
           [routerLink]="link.link"
           routerLinkActive #rla="routerLinkActive"
           [active]="rla.isActive" translate>

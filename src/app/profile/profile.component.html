@@ -1,0 +1,61 @@
+<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1em">
+  <!-- PROFILE PANNEL -->
+  <div fxFlex="35" fxFlex.xs="100">
+    <mat-card class="profile-panel mat-elevation-z8">
+      <mat-card-header class="profile-panel__header profile-panel__header-demo">
+        <div fxFlex fxLayout="row" fxLayoutAlign="start center">
+          <img src="/assets/images/avatars/avatar.png" alt="{{ username }}"/>
+          <div fxLayout="column" fxLayoutAlign="start start">
+            <h2>Usuario</h2>
+            <h3>Email</h3>
+            <h3>Fecha creación</h3>
+          </div>
+        </div>
+        <div class="profile-panel__header-demo-mountain"></div>
+        <div class="profile-panel__header-demo-mountain"></div>
+        <div class="profile-panel__header-demo-cloud"></div>
+        <div class="profile-panel__header-demo-sun"></div>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-nav-list class="profile-panel-list">
+          <a mat-list-item>
+            <mat-icon matListIcon>info</mat-icon>
+            <span translate>Activity</span>
+          </a>
+          <a mat-list-item>
+            <mat-icon matListIcon>notifications</mat-icon>
+            <span translate>Notifications</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item>
+            <mat-icon matListIcon>security</mat-icon>
+            <span translate>Security and privacy</span>
+          </a>
+          <a mat-list-item (click)="optionSelected=1">
+            <mat-icon matListIcon>help</mat-icon>
+            <span translate>Help Center</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item (click)="logout()">
+            <mat-icon matListIcon>exit_to_app</mat-icon>
+            <span translate>Logout</span>
+          </a>
+        </mat-nav-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- OPTION -->
+  <div fxFlex="65" fxFlex.xs="100" fxLayout="column">
+    <mat-expansion-panel *ngIf="optionSelected">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Title</mat-panel-title>
+        <mat-panel-description>Panel description</mat-panel-description>
+      </mat-expansion-panel-header>
+        patata
+    </mat-expansion-panel>
+    <div *ngIf="!optionSelected" fxFlex fxLayout="column" fxLayoutAlign="start center">
+      <h2 style="font-weight: 200">Contenido no seleccionado</h2>
+    </div>
+  </div>
+</div>

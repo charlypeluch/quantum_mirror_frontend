@@ -95,26 +95,26 @@
             </div>
           </div>
           <mat-nav-list class="toolbar-menu-list">
-            <a mat-list-item>
+            <a mat-list-item routerLink="/profile" routerLinkActive="active" (click)="isMobile && sidenav.close()">
               <mat-icon matListIcon>account_circle</mat-icon>
-              <span i18n>My Profile</span>
+              <span translate>My Profile</span>
             </a>
             <a mat-list-item>
               <mat-icon matListIcon>info</mat-icon>
-              <span i18n>Activity</span>
+              <span translate>Activity</span>
             </a>
             <a mat-list-item>
               <mat-icon matListIcon>notifications</mat-icon>
-              <span i18n>Notifications</span>
+              <span translate>Notifications</span>
             </a>
             <mat-divider></mat-divider>
             <a mat-list-item>
               <mat-icon matListIcon>security</mat-icon>
-              <span i18n>Settings and privacy</span>
+              <span translate>Security and privacy</span>
             </a>
             <a mat-list-item>
               <mat-icon matListIcon>help</mat-icon>
-              <span i18n>Help Center</span>
+              <span translate>Help Center</span>
             </a>
             <mat-divider></mat-divider>
             <a mat-list-item (click)="logout()">
