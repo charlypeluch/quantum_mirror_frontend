@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           this.router.navigate([ this.route.snapshot.queryParams.redirect || '/'], { replaceUrl: true });
           this.notificationService.openNotification('Registered Successfully', 'Accept');
 
-          let loginData = {'username': registerData.email, 'password': registerData.password};
+          let loginData = {'email': registerData.email, 'password': registerData.password};
 
           this.authenticationService.login(loginData).then(
             res => {

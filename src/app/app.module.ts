@@ -5,8 +5,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { TranslateModule } from '@ngx-translate/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+
 
 import { environment } from '@env/environment';
 import { CoreModule } from '@app/core';
@@ -17,6 +17,8 @@ import { AccessModule } from './access/access.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -25,13 +27,13 @@ import { AppRoutingModule } from './app-routing.module';
     FlexLayoutModule,
     HttpClientModule,
     TranslateModule.forRoot(),
-    BrowserAnimationsModule,
     MaterialModule,
     CoreModule,
     SharedModule,
     ShellModule,
     DashboardModule,
     AccessModule,
+    BrowserAnimationsModule,
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],
   declarations: [AppComponent],

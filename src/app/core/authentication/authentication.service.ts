@@ -6,7 +6,7 @@ import { Credentials, CredentialsService } from './credentials.service';
 
 
 export interface LoginContext {
-  username: string;
+  email: string;
   password: string;
   remember?: boolean;
 }
@@ -33,18 +33,16 @@ export class AuthenticationService {
    */
   login(context: LoginContext): Promise<Credentials> {
     // Replace by proper authentication call
-    let authData = {
-      email: context.username,
-      password: context.password
-    };
+    let _context = Object.assign({}, context);
+    delete _context.remember;
 
     var promise = new Promise<Credentials>((resolve, reject) => {
-      this.httpClient.disableToken().post('/auth', authData).toPromise().then(
+      this.httpClient.disableToken().post('/auth', _context).toPromise().then(
         result => {
           let _t = this.credentialsService.decodeToken(result['token']);
-          let _credentials: Credentials = {username: _t.alias, token: result['token']};
+          let _credentials: Credentials = {id: _t.id, alias: _t.alias, email: _t.email, token: result['token']};
           this.credentialsService.setCredentials(_credentials, context.remember);
-          resolve({username: _t.alias, token: result['token']});
+          resolve(_credentials);
         },
         () => {
           reject();

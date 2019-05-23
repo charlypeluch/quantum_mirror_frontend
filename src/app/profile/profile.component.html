@@ -4,11 +4,11 @@
     <mat-card class="profile-panel mat-elevation-z8">
       <mat-card-header class="profile-panel__header profile-panel__header-demo">
         <div fxFlex fxLayout="row" fxLayoutAlign="start center">
-          <img src="/assets/images/avatars/avatar.png" alt="{{ username }}"/>
+          <img src="/assets/images/avatars/avatar.png" alt="{{ userProfile?.alias }}"/>
           <div fxLayout="column" fxLayoutAlign="start start">
-            <h2>Usuario</h2>
-            <h3>Email</h3>
-            <h3>Fecha creación</h3>
+            <h2>{{ userProfile?.alias }}</h2>
+            <h3>{{ userProfile?.email }}</h3>
+            <h3>{{ userProfile?.created_at | date }}</h3>
           </div>
         </div>
         <div class="profile-panel__header-demo-mountain"></div>
@@ -27,11 +27,11 @@
             <span translate>Notifications</span>
           </a>
           <mat-divider></mat-divider>
-          <a mat-list-item>
+          <a mat-list-item routerLink="/profile/security" routerLinkActive="active" (click)="optionSelected = true">
             <mat-icon matListIcon>security</mat-icon>
             <span translate>Security and privacy</span>
           </a>
-          <a mat-list-item (click)="optionSelected=1">
+          <a mat-list-item routerLink="/profile/help" routerLinkActive="active" (click)="optionSelected = true">
             <mat-icon matListIcon>help</mat-icon>
             <span translate>Help Center</span>
           </a>
@@ -46,16 +46,11 @@
   </div>
 
   <!-- OPTION -->
-  <div fxFlex="65" fxFlex.xs="100" fxLayout="column">
-    <mat-expansion-panel *ngIf="optionSelected">
-      <mat-expansion-panel-header>
-        <mat-panel-title>Title</mat-panel-title>
-        <mat-panel-description>Panel description</mat-panel-description>
-      </mat-expansion-panel-header>
-        patata
-    </mat-expansion-panel>
-    <div *ngIf="!optionSelected" fxFlex fxLayout="column" fxLayoutAlign="start center">
-      <h2 style="font-weight: 200">Contenido no seleccionado</h2>
+  <div fxFlex="65" fxFlex.xs="100">
+    <div>
+      <div [@routeAnimations]="o && o.activatedRouteData">
+        <router-outlet #o="outlet"></router-outlet>
+      </div>
     </div>
   </div>
 </div>

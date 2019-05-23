@@ -10,3 +10,6 @@ declare var module: NodeModule;
 interface NodeModule {
   id: string;
 }
+
+// PatternLock lib
+declare let PatternLock: any;

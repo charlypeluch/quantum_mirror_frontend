@@ -4,6 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from '@app/material.module';
 import { LoaderComponent } from './components/loader/loader.component';
+import { UserService } from './services/user.service';
 import { LoaderService } from './services/loader.service';
 import { ThemeService } from './services/theme.service';
 import { NotificationService } from './services/notification.service';
@@ -15,6 +16,7 @@ import { NotificationService } from './services/notification.service';
     CommonModule
   ],
   providers: [
+    UserService,
     LoaderService,
     ThemeService,
     NotificationService

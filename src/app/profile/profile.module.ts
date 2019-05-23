@@ -6,6 +6,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@app/material.module';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
+import { SecurityComponent } from './security/security.component';
+import { HelpComponent } from './help/help.component';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import { ProfileComponent } from './profile.component';
   ],
   declarations: [
     ProfileComponent,
+    SecurityComponent,
+    HelpComponent,
   ],
   providers: []
 })

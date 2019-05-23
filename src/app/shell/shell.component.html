@@ -73,7 +73,7 @@
           <mat-menu #userMenu="matMenu">
             <mat-list>
               <mat-list-item>
-                <span translate>Logged in as</span>&nbsp;<b>{{ username }}</b>
+                <span translate>Logged in as</span>&nbsp;<b>{{ alias }}</b>
               </mat-list-item>
               <mat-divider></mat-divider>
             </mat-list>
@@ -82,16 +82,15 @@
         </div> -->
 
         <a mat-button [matMenuTriggerFor]="userMenu">
-          <img class="toolbar-user-avatar" src="/assets/images/avatars/avatar.png" alt="{{ username }}">
-          <span>{{ username }}</span>
+          <img class="toolbar-user-avatar" src="/assets/images/avatars/avatar.png" alt="{{ alias }}">
+          <span>{{ alias }}</span>
         </a>
         <mat-menu #userMenu="matMenu">
           <div fxLayout="row" fxLayoutAlign="start center" class="toolbar-menu-header">
-            <img class="toolbar-menu-header__avatar" src="/assets/images/avatars/avatar.png" alt="{{ username }}"/>
+            <img class="toolbar-menu-header__avatar" src="/assets/images/avatars/avatar.png" alt="{{ alias }}"/>
             <div class="toolbar-menu-header__text" fxLayout="column" fxLayoutAlign="center start">
-              <h3>{{ username }}</h3>
-              <h4>Usuario</h4>
-              <!-- <h3>{{ email | 'usuario' }}</h3> -->
+              <h3>{{ alias }}</h3>
+              <h5>{{ email }}</h5>
             </div>
           </div>
           <mat-nav-list class="toolbar-menu-list">

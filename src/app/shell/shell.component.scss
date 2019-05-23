@@ -35,7 +35,7 @@
 
 .toolbar-menu-header {
   background-color: mat-color($mat-amber, 700);
-  padding: 10px 5px 10px 20px;
+  padding: 10px 10px 10px 20px;
 }
 
 .toolbar-menu-header__avatar {
@@ -47,7 +47,7 @@
 }
 
 .toolbar-menu-header__text {
-  h3, h4 {
+  h3, h5 {
     margin: 0px;
   }
 }

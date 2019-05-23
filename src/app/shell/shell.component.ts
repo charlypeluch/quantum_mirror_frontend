@@ -43,9 +43,14 @@ export class ShellComponent implements OnInit {
       .subscribe(() => this.router.navigate(['/access'], { replaceUrl: true }));
   }
 
-  get username(): string | null {
-    const credentials = this.credentialsService.credentials;
-    return credentials ? credentials.username : null;
+  get alias(): string | null {
+    let credentials = this.credentialsService.credentials;
+    return credentials ? credentials.alias : null;
+  }
+
+  get email(): string | null {
+    let credentials = this.credentialsService.credentials;
+    return credentials ? credentials.email : null;
   }
 
   get languages(): string[] {
