@@ -6,11 +6,13 @@ import { ProfileComponent } from './profile.component';
 import { SecurityComponent } from './security/security.component';
 import { HelpComponent } from './help/help.component';
 
+import { ProfileResolver } from './profile.resolver';
+
 const routes: Routes = [
   // Module is lazy loaded, see app-routing.module.ts
-  { path: '', component: ProfileComponent, data: { title: extract('Profile') },
+  { path: '', component: ProfileComponent, data: { title: extract('Profile') }, resolve: { userProfile: ProfileResolver },
     children: [
-      { path: 'security', component: SecurityComponent, data: { title: extract('security') }},
+      { path: 'security', component: SecurityComponent, data: { title: extract('Security') }},
       { path: 'help', component: HelpComponent, data: { title: extract('Help') }}
     ]
   }
@@ -19,6 +21,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: []
+  providers: [ProfileResolver]
 })
 export class ProfileRoutingModule { }

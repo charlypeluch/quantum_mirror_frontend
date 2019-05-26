@@ -16,15 +16,21 @@ export class ProfileComponent implements OnInit {
   userProfile: any;
   optionSelected:boolean = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, private authenticationService: AuthenticationService, ) {
-    this.route.data.subscribe((data) => console.log(data));
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private userService: UserService, private authenticationService: AuthenticationService, ) {
+
   }
 
   ngOnInit(): void {
-    this.userService.getUserProfile().then(
-      result => this.userProfile = result
-    )
+    this.activatedRoute.data.subscribe(data => {
+      this.userProfile = data.userProfile;
+    });
   }
+
+  // getUserProfile() {
+  //   this.userService.getUserProfile().then(
+  //     result => this.userProfile = result
+  //   )
+  // }
 
   logout() {
     this.authenticationService.logout()

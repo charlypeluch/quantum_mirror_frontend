@@ -10,6 +10,24 @@
   font-size: 14px;
 }
 
+.profile-panel-container-list mat-panel-title {
+  color: mat-color($mat-blue-gray, 700);
+}
+
+.profile-panel-container-list mat-expansion-panel {
+  margin-bottom: 15px;
+}
+
+.profile-panel-container-list p {
+  text-align: left;
+}
+
+.profile-panel-container-list img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .profile-panel__header {
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
@@ -126,4 +144,12 @@
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+.profile-setting-configured {
+  color: #03964e;
+}
+
+.profile-setting-not-configured {
+  color: #ff3300;
 }

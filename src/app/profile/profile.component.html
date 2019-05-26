@@ -27,7 +27,7 @@
             <span translate>Notifications</span>
           </a>
           <mat-divider></mat-divider>
-          <a mat-list-item routerLink="/profile/security" routerLinkActive="active" (click)="optionSelected = true">
+          <a mat-list-item routerLink="/profile/security" [state]="{ userProfile: userProfile }" routerLinkActive="active" (click)="optionSelected = true">
             <mat-icon matListIcon>security</mat-icon>
             <span translate>Security and privacy</span>
           </a>

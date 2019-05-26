@@ -67,7 +67,6 @@ export class ShellComponent implements OnInit {
 
   getThemes() {
     this.themes = this.themeService.getSupportedThemes();
-    console.warn("_THEME", this.themes);
   }
 
   toggleTheme(theme:string) {

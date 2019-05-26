@@ -1,43 +1,97 @@
-<mat-expansion-panel>
-  <mat-expansion-panel-header>
-    <mat-panel-title>Title</mat-panel-title>
-    <mat-panel-description>
-      Description
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-  <div fxLayout="row" fxLayout.lt-lg="column">
-    <div fxFlex="60" fxFlex.lt-lg="100">
-      <svg class="patternlock patternlock-background" id="lock" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <g class="lock-actives"></g>
-        <g class="lock-lines"></g>
-        <g class="lock-dots">
-          <circle cx="20" cy="20" r="2" />
-          <circle cx="50" cy="20" r="2" />
-          <circle cx="80" cy="20" r="2" />
+<div class="profile-panel-container-list">
+  <!-- PATTER UNLOCK -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title fxLayoutAlign="start center">
+        <mat-icon matListIcon>security</mat-icon>
+        <span translate style="padding-left: 10px">Pattern unlock</span>
+      </mat-panel-title>
+      <mat-panel-description fxLayoutAlign="end center">
+        <div [className]="userProfile.pattern ? 'profile-setting-configured' : 'profile-setting-not-configured'">
+          <span *ngIf="userProfile.pattern" translate>Configured</span>
+          <span *ngIf="!userProfile.pattern " translate>Not configured</span>
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start">
+      <div fxFlex fxFlexLayout="row" fxLayoutAlign="space-between center">
+        <p translate>The unlock pattern allows you to unlock the mirror if you have a LeapMotion™ device connected</p>
+        <button mat-stroked-button color="primary" (click)="editPatternLock()" *ngIf="!isPatternEdition">
+          <span translate>Edit</span>
+        </button>
+      </div>
+      <div fxFlex="60" fxFlex.lt-md="100" xLayout="column" [hidden]="!isPatternEdition">
+        <svg class="patternlock patternlock-background" id="lock" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <g class="lock-actives"></g>
+          <g class="lock-lines"></g>
+          <g class="lock-dots">
+            <circle cx="20" cy="20" r="2" />
+            <circle cx="50" cy="20" r="2" />
+            <circle cx="80" cy="20" r="2" />
 
-          <circle cx="20" cy="50" r="2" />
-          <circle cx="50" cy="50" r="2" />
-          <circle cx="80" cy="50" r="2" />
+            <circle cx="20" cy="50" r="2" />
+            <circle cx="50" cy="50" r="2" />
+            <circle cx="80" cy="50" r="2" />
 
-          <circle cx="20" cy="80" r="2" />
-          <circle cx="50" cy="80" r="2" />
-          <circle cx="80" cy="80" r="2" />
-        </g>
-      </svg>
+            <circle cx="20" cy="80" r="2" />
+            <circle cx="50" cy="80" r="2" />
+            <circle cx="80" cy="80" r="2" />
+          </g>
+        </svg>
+        <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+          <button fxFlex mat-stroked-button color="primary" (click)="cancelPatternLock()">
+            <span translate>Cancel</span>
+          </button>
+          <button fxFlex mat-flat-button color="primary" (click)="patchUserPatternUnlock()" [disabled]="!isPatternValid">
+            <span translate>Save</span>
+          </button>
+        </div>
+      </div>
     </div>
-    <div fxFlex fxLayoutAlign=" center">
-      <p>El patrón de desbloqueo te permitirá desbloquear el espejo si tienes conectado un LeapMotion™</p>
+  </mat-expansion-panel>
+
+  <!-- FACE UNLOCK -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title fxLayoutAlign="start center">
+        <mat-icon matListIcon>face</mat-icon>
+        <span translate style="padding-left: 10px">Face unlock</span>
+      </mat-panel-title>
+      <mat-panel-description fxLayoutAlign="end center">
+        <div [className]="userProfile.facial ? 'profile-setting-configured' : 'profile-setting-not-configured'">
+          <span *ngIf="userProfile.facial" translate>Configured</span>
+          <span *ngIf="!userProfile.facial" translate>Not configured</span>
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start start" fxLayoutGap="20px">
+      <div fxFlex="25" fxFlex.xs="100" fxLayout="column" fxLayoutAlign="center center">
+        <img src="/assets/images/avatars/facial.png" alt="facial"/>
+        <!-- <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+          <button fxFlex mat-stroked-button color="primary">
+            <span translate>Delete</span>
+          </button>
+          <button fxFlex mat-flat-button color="primary">
+            <span translate>Upload</span>
+          </button>
+        </div> -->
+      </div>
+      <div fxFlex fxLayout="column" fxLayoutAlign="space-between start">
+        <p translate>The unlock pattern allows you to unlock the mirror if you have a LeapMotion™ device connected</p>
+        <!-- <button fxFlex mat-flat-button color="primary">
+          <span translate>Upload</span>
+        </button> -->
+        <form (ngSubmit)="onUpload()">
+          <div>
+            <input type="file" name="image" (change)="fileProgress($event)"/>
+          </div>
+          <div>
+            <button fxFlex mat-flat-button color="primary">
+              <span translate>Upload</span>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
-  <div fxLayout="row" fxLayoutAlign="space-between center" >
-    <button mat-raised-button color="primary" (click)="clearPattern()">
-      <span translate>Clear</span>
-    </button>
-    <button mat-raised-button color="primary" (click)="successPattern()">
-      <span translate>Error</span>
-    </button>
-    <button mat-raised-button color="primary" (click)="errorPattern()">
-      <span translate>Success</span>
-    </button>
-  </div>
-</mat-expansion-panel>
+  </mat-expansion-panel>
+</div>
