@@ -11,7 +11,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full'},
       { path: 'login', component: LoginComponent, data: { title: extract('Login') }},
-      { path: 'register', component: RegisterComponent, data: { title: extract('Register') }},
+      { path: 'register', component: RegisterComponent, data: { title: extract('Register') }}
     ]
   },
 ];

@@ -4,7 +4,8 @@ import {
     query,
     style,
     animate,
-    group
+    group,
+    state,
 } from '@angular/animations';
 
 
@@ -24,3 +25,24 @@ export const slideAnimation =
           ])
       ])
   ]);
+
+export const slideUpAnimation =
+  trigger('slideUpAnimation', [
+      state('in', style({height: '*', opacity: 0})),
+      transition(':leave', [
+          style({height: '*', opacity: 1}),
+          group([
+              animate(1200, style({height: 0})),
+              animate('1000ms ease-in-out', style({'opacity': '0'}))
+          ])
+
+      ]),
+      transition(':enter', [
+          style({height: '0', opacity: 0}),
+          group([
+              animate(1200, style({height: '*'})),
+              animate('1000ms ease-in-out', style({'opacity': '1'}))
+          ])
+
+      ])
+  ])

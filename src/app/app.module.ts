@@ -14,6 +14,7 @@ import { SharedModule } from '@app/shared';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ShellModule } from './shell/shell.module';
 import { AccessModule } from './access/access.module';
+import { QuantumModule } from './quantum/quantum.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -33,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ShellModule,
     DashboardModule,
     AccessModule,
+    QuantumModule,
     BrowserAnimationsModule,
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],

@@ -34,8 +34,6 @@ export class SecurityComponent implements OnInit {
     this.patternLock = new PatternLock("#lock", {
       onPattern: function(pattern) {
         // Context is the pattern lock instance
-        console.log('P: '+pattern);
-
         this.validePatternLock(pattern);
      }.bind(this)
     });
@@ -92,12 +90,10 @@ export class SecurityComponent implements OnInit {
 
   public fileProgress(fileInput: any) {
     this.facialUnlockFile = <File>fileInput.target.files[0];
-    console.warn("FILE: ", this.facialUnlockFile);
   }
 
   onUpload() {
     let params = {'file': this.facialUnlockFile};
-    console.warn("PARAMS: ", params);
     this.userService.uploadUserProfileFacial(params);
   }
 

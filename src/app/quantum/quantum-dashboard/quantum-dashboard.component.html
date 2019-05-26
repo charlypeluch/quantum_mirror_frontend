@@ -1,0 +1,51 @@
+<!-- <form (ngSubmit)="register()" [formGroup]="registerForm" novalidate>
+  <br/>
+  <div fxLayout="column" class="register-container">
+    <mat-form-field>
+      <input type="text" matInput formControlName="alias" autocomplete="alias" [placeholder]="'Alias' | translate"/>
+      <mat-error *ngIf="registerForm.controls.alias.errors?.required || registerForm.controls.alias.untouched">
+        <span translate>Alias is required</span>
+      </mat-error>
+      <mat-error *ngIf="registerForm.controls.alias.errors?.minlength">
+        <span translate>Alias must be at least 5 characters</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="email" matInput formControlName="email" autocomplete="email" [placeholder]="'Email' | translate"/>
+      <mat-error *ngIf="registerForm.controls.email.errors?.required || registerForm.controls.email.untouched">
+        <span translate>Email is required</span>
+      </mat-error>
+      <mat-error *ngIf="registerForm.controls.email.errors?.email">
+        <span translate>Email is not valid</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" matInput formControlName="password" autocomplete="current-password" [placeholder]="'Password' | translate"/>
+      <mat-error *ngIf="registerForm.controls.password.errors?.required || registerForm.controls.password.untouched">
+        <span translate>Password is required</span>
+      </mat-error>
+      <mat-error *ngIf="registerForm.controls.password.errors?.minLength">
+        <span translate>Password must be at least 8 characters</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" matInput formControlName="confirmPassowrd" autocomplete="confirm-password" [placeholder]="'Confirm password' | translate" pattern="{{ registerForm.get('password').value }}"/>
+      <mat-error *ngIf="registerForm.controls.confirmPassowrd.errors?.required || registerForm.controls.confirmPassowrd.untouched">
+        <span translate>Password is required</span>
+      </mat-error>
+      <mat-error *ngIf="!registerForm.controls.confirmPassowrd.errors?.pattern ">
+        <span translate>Passwords not match</span>
+      </mat-error>
+    </mat-form-field>
+    <br/>
+
+    <div class="register-error" [hidden]="!isError" translate>Invalid data</div>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid || isLoading">
+      <span translate>Register</span>
+    </button>
+  </div>
+</form> -->
+<div fxFlex fxLayoutAlign="center center">
+  <p>Quantum Dashboard</p>
+</div>

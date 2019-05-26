@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   userProfile: any;
   optionSelected:boolean = false;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private userService: UserService, private authenticationService: AuthenticationService, ) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private authenticationService: AuthenticationService, ) {
 
   }
 
@@ -25,12 +25,6 @@ export class ProfileComponent implements OnInit {
       this.userProfile = data.userProfile;
     });
   }
-
-  // getUserProfile() {
-  //   this.userService.getUserProfile().then(
-  //     result => this.userProfile = result
-  //   )
-  // }
 
   logout() {
     this.authenticationService.logout()
