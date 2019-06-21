@@ -1,4 +1,4 @@
-<div id="stage" fxFill fxFlex fxLayout="column" fxLayoutAlign="center center">
+<div fxFill fxFlex fxLayout="column" fxLayoutAlign="center center">
   <!-- <p>Quamtum Access</p> -->
 
   <svg class="_patternlock" id="quantum-lock" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -23,5 +23,30 @@
       <span translate>Clear</span>
     </button>
   </div>
-  <!-- <div id="stage" style="background-color:rgb(250,235,200); width:800px; height:600"></div> -->
+  <br>
+  <div fxLayout="row">
+    <button fxFlex mat-stroked-button (click)="connectLeap()">
+      <span translate>Connect Leap</span>
+    </button>
+    <button fxFlex mat-stroked-button (click)="disconnectLeap()">
+      <span translate>Disconnect Leap</span>
+    </button>
+  </div>
+  <br>
+  <div fxLayout="row">
+    <button fxFlex mat-stroked-button (click)="_leapCursorEvent(true)">
+      <span translate>Activate Events</span>
+    </button>
+    <button fxFlex mat-stroked-button (click)="_leapCursorEvent(false)">
+      <span translate>Deactivate Events</span>
+    </button>
+  </div>
+  <br>
+  <div fxLayout="row">
+    <button fxFlex mat-stroked-button (click)="_leapCursorSimulateEvent()">
+      <span translate>Simulate Events</span>
+    </button>
+  </div>
+  <!-- <canvas id="stage" style="position: absolute;"></canvas> -->
+  <!-- <div id="stage"></div> -->
 </div>
