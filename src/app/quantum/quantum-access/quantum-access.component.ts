@@ -1,13 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { AuthenticationService } from '@app/core';
+import { CredentialsService, AuthenticationService } from '@app/core';
 import { NotificationService } from '@app/shared';
 
-import * as $ from 'jquery';
 import * as PatternLock from 'pattern-lock-js';
-// import * as Leap from 'leapjs';
 
 @Component({
   selector: 'app-quantum',
@@ -15,10 +12,7 @@ import * as PatternLock from 'pattern-lock-js';
   styleUrls: ['./quantum-access.component.scss']
 })
 export class QuantumAccessComponent implements OnInit, OnDestroy {
-
-  // isError: boolean = false;
-  // isLoading: boolean = false;
-  // registerForm!: FormGroup;
+  isError: boolean = false;
 
   patternLock: any;
   leapController: any;
@@ -37,20 +31,45 @@ export class QuantumAccessComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private formBuilder: FormBuilder,
+              private credentialsService: CredentialsService,
               private authenticationService: AuthenticationService,
               private notificationService: NotificationService) {
-    // this.createForm();
   }
 
   ngOnInit() {
+    // if (this.credentialsService.isAuthenticated()) {
+    //   // this.router.navigate(['/quantum/quantum-dashboard'], { replaceUrl: true });
+    //   this.router.navigate([ this.route.snapshot.queryParams.redirect || '/quantum/quantum-dashboard'], { replaceUrl: true });
+    // }
+
     this.patternLock = new PatternLock("#quantum-lock", {
       onPattern: function(pattern) {
         console.warn("PATTERN: ", pattern);
+        this.quantumLogin(pattern);
       }.bind(this)
     });
 
     this.leapController = new Leap.Controller({ enableGestures: true });
+  }
+
+  quantumLogin(pattern:number) {
+    // this.isLoading = true;
+
+    this.authenticationService.loginMirror(pattern).then(
+      result => {
+        this.isError = false;
+        // this.router.navigate([ this.route.snapshot.queryParams.redirect || '/quantum/quantum-dashboard'], { replaceUrl: true });
+        // this.router.navigate(['/quantum/quantum-dashboard'], { replaceUrl: true });
+        this.router.navigate([ this.route.snapshot.queryParams.redirect || '/quantum'], { replaceUrl: true });
+      },
+      error => {
+        this.isError = true;
+      }
+    )
+    .finally(() => {
+      // if(this.isError)
+      //   this.clearPatternLock()
+    });
   }
 
   _leapCursorEvent(mode) {
@@ -73,14 +92,17 @@ export class QuantumAccessComponent implements OnInit, OnDestroy {
   }
 
   _leapCursorSimulateEvent() {
-    let _lock = document.getElementById('quantum-lock');
-    var _initx = 424;
-    var _inity = 317;
+    // let _lock = document.getElementById('quantum-lock');
+    var _initx = 528;
+    var _inity = 554;
 
-    var _endx = 555;
-    var _endy = 317;
+    var _endx = 528;
+    var _endy = 554;
 
-    var event_d = new MouseEvent('mousedown', {
+    let _element = document.elementFromPoint(_initx, _inity);
+
+    // _element.click();
+    var event_d = new MouseEvent('click', {
         'bubbles': true,
         'buttons': 1,
         'cancelable': true,
@@ -92,68 +114,68 @@ export class QuantumAccessComponent implements OnInit, OnDestroy {
         'screenY': _inity,
         'view': window
     });
-    _lock.dispatchEvent(event_d);
-    console.warn("MOVE DOWN...");
+    _element.dispatchEvent(event_d);
+    console.warn("CLICK...");
 
-    var event_m = new MouseEvent('mousemove', {
-      'bubbles': true,
-      'buttons': 1,
-      'cancelable': true,
-      'clientX': _initx,
-      'clientY': _inity,
-      'composed': true,
-      'detail': 1,
-      'screenX': _initx,
-      'screenY': _inity,
-      'view': window
-    });
-    _lock.dispatchEvent(event_m);
-    console.warn("MOVE 0...");
+    // var event_m = new MouseEvent('mousemove', {
+    //   'bubbles': true,
+    //   'buttons': 1,
+    //   'cancelable': true,
+    //   'clientX': _initx,
+    //   'clientY': _inity,
+    //   'composed': true,
+    //   'detail': 1,
+    //   'screenX': _initx,
+    //   'screenY': _inity,
+    //   'view': window
+    // });
+    // _lock.dispatchEvent(event_m);
+    // console.warn("MOVE 0...");
+    //
+    // var event_m = new MouseEvent('mousemove', {
+    //   'bubbles': true,
+    //   'buttons': 1,
+    //   'cancelable': true,
+    //   'clientX': 495,
+    //   'clientY': 317,
+    //   'composed': true,
+    //   'detail': 1,
+    //   'screenX': 495,
+    //   'screenY': 317,
+    //   'view': window
+    // });
+    // _lock.dispatchEvent(event_m);
+    // console.warn("MOVE 1...");
+    //
+    // var event_m = new MouseEvent('mousemove', {
+    //   'bubbles': true,
+    //   'buttons': 1,
+    //   'cancelable': true,
+    //   'clientX': 525,
+    //   'clientY': 317,
+    //   'composed': true,
+    //   'detail': 1,
+    //   'screenX': 525,
+    //   'screenY': 317,
+    //   'view': window
+    // });
+    // _lock.dispatchEvent(event_m);
+    // console.warn("MOVE 2...");
 
-    var event_m = new MouseEvent('mousemove', {
-      'bubbles': true,
-      'buttons': 1,
-      'cancelable': true,
-      'clientX': 495,
-      'clientY': 317,
-      'composed': true,
-      'detail': 1,
-      'screenX': 495,
-      'screenY': 317,
-      'view': window
-    });
-    _lock.dispatchEvent(event_m);
-    console.warn("MOVE 1...");
-
-    var event_m = new MouseEvent('mousemove', {
-      'bubbles': true,
-      'buttons': 1,
-      'cancelable': true,
-      'clientX': 525,
-      'clientY': 317,
-      'composed': true,
-      'detail': 1,
-      'screenX': 525,
-      'screenY': 317,
-      'view': window
-    });
-    _lock.dispatchEvent(event_m);
-    console.warn("MOVE 2...");
-
-    var event_u = new MouseEvent('mouseup', {
-      'bubbles': true,
-      'buttons': 1,
-      'cancelable': true,
-      'clientX': _endx,
-      'clientY': _endy,
-      'composed': true,
-      'detail': 1,
-      'screenX': _endx,
-      'screenY': _endy,
-      'view': window
-    });
-    _lock.dispatchEvent(event_u);
-    console.warn("MOVE UP...");
+    // var event_u = new MouseEvent('mouseup', {
+    //   'bubbles': true,
+    //   'buttons': 1,
+    //   'cancelable': true,
+    //   'clientX': _endx,
+    //   'clientY': _endy,
+    //   'composed': true,
+    //   'detail': 1,
+    //   'screenX': _endx,
+    //   'screenY': _endy,
+    //   'view': window
+    // });
+    // _element.dispatchEvent(event_u);
+    // console.warn("MOVE UP...");
   }
 
   _leapCursorInit() {
@@ -165,7 +187,7 @@ export class QuantumAccessComponent implements OnInit, OnDestroy {
     this.leapCursor = {
       touchPointersLeft: [],
       touchPointersRight: [],
-      touchClick: false
+      touchClick: false,
     }
 
     for (let t of touchPointers) {
@@ -184,7 +206,7 @@ export class QuantumAccessComponent implements OnInit, OnDestroy {
         _pointer.id                       = 'leap_hand_' + t.hand + '_finger_' + f;
         _pointer.style.position           = 'absolute';
         _pointer.style.visibility         = 'hidden';
-        _pointer.style.zIndex             = '50';
+        _pointer.style.zIndex             = '9999';
         _pointer.style.opacity            = '0.5';
         _pointer.style.width              = '40px';
         _pointer.style.height             = '40px';
@@ -226,30 +248,36 @@ export class QuantumAccessComponent implements OnInit, OnDestroy {
           _touchPointers = this.leapCursor.touchPointersRight;
 
         for (let finger of hand.fingers) {
-          let _pointable:any = finger;
-          let _pointer:any = _touchPointers[finger.type];
+          let _pointable: any = finger;
+          let _pointer: any = _touchPointers[finger.type];
 
-            let pos = iBox.normalizePoint(_pointable.tipPosition, true);
-            _pointer.style.left = (pos[0] * _offsetWidth) + 'px';
-            _pointer.style.top = (_offsetHeight - pos[1] * _offsetHeight) + 'px';
-            _pointer.style.visibility = _pointable.extended ? 'visible': 'hidden';
-            _pointer.style.color = 'black';
+          let pos = iBox.normalizePoint(_pointable.tipPosition, true);
+          let pos_x = (pos[0] * _offsetWidth);
+          let pos_y = (_offsetHeight - pos[1] * _offsetHeight);
 
-            if (_pointable.touchZone == "hovering") {
-              _pointer.style.opacity = (.375 - _pointable.touchDistance * .2);
-              _pointer.style.backgroundColor = 'rgb(0,128,0)';
-            }
-            else if (_pointable.touchZone == "touching") {
-              _pointer.style.opacity = (.375 - _pointable.touchDistance * .5);
-              _pointer.style.backgroundColor = 'rgb(128,0,0)';
-            }
-            else {
-              _pointer.style.opacity = (.2);
-              _pointer.style.color = 'white';
-              _pointer.style.backgroundColor = 'gray';
-            }
+          _pointer.style.left = pos_x + 'px';
+          _pointer.style.top = pos_y + 'px';
+          _pointer.style.visibility = _pointable.extended ? 'visible' : 'hidden';
+          _pointer.style.color = 'black';
 
-            _pointer.children[0].textContent = _pointable.touchDistance.toFixed(2);
+          if (_pointable.touchZone == "hovering") {
+            _pointer.style.opacity = (.375 - _pointable.touchDistance * .2);
+            _pointer.style.backgroundColor = 'rgb(0,128,0)';
+          }
+          else if (_pointable.touchZone == "touching") {
+            _pointer.style.opacity = (.375 - _pointable.touchDistance * .5);
+            _pointer.style.backgroundColor = 'rgb(128,0,0)';
+          }
+          else {
+            _pointer.style.opacity = (.2);
+            _pointer.style.color = 'white';
+            _pointer.style.backgroundColor = 'gray';
+          }
+
+          if (_pointable.type == 1  && _pointable.extended)                     // Action with index extended
+            this._leapCursorAction(_pointable, pos_x, pos_y);
+
+          _pointer.children[0].textContent = _pointable.touchDistance.toFixed(2);
         }
       }
     }
@@ -350,6 +378,51 @@ export class QuantumAccessComponent implements OnInit, OnDestroy {
         // touchPoints['anim'].start();
   }
 
+  _leapCursorAction(pointer, x, y) {
+    let _element = document.elementFromPoint(x, y);
+    let _button = _element.closest("button");
+    let _a = _element.closest("a");
+
+    if (pointer.touchZone == "hovering") {
+      if (this.leapCursor.touchClick) {
+        this._leapCursorActionSimulate(_element, 'mouseup', x, y);
+        this.leapCursor.touchClick = false;
+      }
+    }
+    else if (pointer.touchZone == "touching") {
+      if (!this.leapCursor.touchClick) {
+        if (_button)
+          _button.click();
+        else if (_a)
+          _a.click();
+        else
+          this._leapCursorActionSimulate(_element, 'mousedown', x, y);
+
+        this.leapCursor.touchClick = true;
+      }
+      else {
+        this._leapCursorActionSimulate(_element, 'mousemove', x, y);
+      }
+    }
+  }
+
+  _leapCursorActionSimulate(element, event_type, x, y) {
+    let _event = new MouseEvent(event_type, {
+        'bubbles': true,
+        'buttons': 1,
+        'cancelable': true,
+        'clientX': x,
+        'clientY': y,
+        'composed': true,
+        'detail': 1,
+        'screenX': x,
+        'screenY': y,
+        'view': window
+    });
+    element.dispatchEvent(_event);
+  }
+
+
   _leapCursorClear(hand='mix') {
     let _touchPointers = this.leapCursor.touchPointersLeft.concat(this.leapCursor.touchPointersRight);
 
@@ -357,8 +430,8 @@ export class QuantumAccessComponent implements OnInit, OnDestroy {
       _touchPointers = this.leapCursor.touchPointersRight;
     else if (hand == 'right')
       _touchPointers = this.leapCursor.touchPointersLeft;
-
-    this.leapCursor.touchClick = false;
+    else
+      this.leapCursor.touchClick = false;
 
     for (let t of _touchPointers) {
       t.style.visibility = 'hidden';

@@ -12,21 +12,7 @@ import { slideUpAnimation } from '../shared/animations/animation-navigation';
   animations: [slideUpAnimation]
 })
 export class QuantumComponent implements OnInit {
-  // navigationLinks: any[];
-  // activeLinkIndex = -1;
-
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private themeService: ThemeService) {
-    // this.navigationLinks = [
-    //     {
-    //         label: 'Login',
-    //         link: './login',
-    //         index: 0
-    //     }, {
-    //         label: 'Register',
-    //         link: './register',
-    //         index: 1
-    //     }
-    // ];
   }
 
   ngOnInit(): void {

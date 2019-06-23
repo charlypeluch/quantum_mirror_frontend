@@ -1,9 +1,11 @@
-<div fxFill fxFlex fxLayout="column" fxLayoutAlign="center center" class="mat-typography">
+<!-- <div fxFill fxFlex  fxLayoutAlign="center center" class="mat-typography">
   <div>
     <h1 fxLayoutAlign="center"><span style="font-weight: 200">Quantum</span><span>Mirror</span></h1>
   </div>
-  <!-- <router-outlet></router-outlet> -->
   <div [@slideUpAnimation]="q && q.activatedRouteData">
     <router-outlet #q="outlet"></router-outlet>
   </div>
+</div> -->
+<div fxFill fxFlex fxLayout="column" [@slideUpAnimation]="q && q.activatedRouteData">
+  <router-outlet #q="outlet"></router-outlet>
 </div>

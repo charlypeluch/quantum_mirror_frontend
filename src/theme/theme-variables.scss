@@ -307,7 +307,7 @@ $quantum-theme: mat-light-theme(
 
 
 //////////////////////////////////////////////////////////////////////////////
-// QUANTUM
+// QUANTUM MIRROR
 //////////////////////////////////////////////////////////////////////////////
 
 $quantum-mirror-typography: mat-typography-config(
@@ -390,11 +390,42 @@ $quantum-mirror-theme: mat-light-theme(
   //   border-color: rgba(0, 0, 0, 0.12);
   //   box-shadow: none;
   // }
-
+  .mat-raised-button.mat-accent {
+    background-color: $accent;
+  }
   .mat-stroked-button:not([disabled]) {
     border-color: rgba(255, 255, 255, 0.3);
     color: $accent;
   }
+
+  mat-calendar {
+    color: white;
+    
+    .mat-calendar-arrow {
+      border-top-color: rgba(255, 255, 255, 0.75) !important;
+    }
+
+    .mat-calendar-table-header {
+      color: rgba(255, 255, 255, 0.55) !important;
+    }
+
+    .mat-calendar-table-header-divider::after {
+      color: rgba(255, 255, 255, 0.55) !important;
+    }
+
+    .mat-calendar-body-label {
+      color: rgba(255, 255, 255, 0.75) !important;
+    }
+
+    .mat-calendar-body-cell-content {
+      color: white !important;
+    }
+
+    .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+      border-color: rgba(255, 255, 255, 0.55) !important;
+    }
+  }
+
   // .mat-chip {
   //   box-sizing: border-box;
   //   border-width: 1px;

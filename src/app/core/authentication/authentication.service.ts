@@ -32,7 +32,6 @@ export class AuthenticationService {
    * @return The user credentials.
    */
   login(context: LoginContext): Promise<Credentials> {
-    // Replace by proper authentication call
     let _context = Object.assign({}, context);
     delete _context.remember;
 
@@ -42,6 +41,28 @@ export class AuthenticationService {
           let _t = this.credentialsService.decodeToken(result['token']);
           let _credentials: Credentials = {id: _t.id, alias: _t.alias, email: _t.email, token: result['token']};
           this.credentialsService.setCredentials(_credentials, context.remember);
+          resolve(_credentials);
+        },
+        () => {
+          reject();
+        }
+      )
+    });
+    return promise;
+  }
+
+  /**
+   * Authenticates the user.
+   * @param context The login parameters.
+   * @return The user credentials.
+   */
+  loginMirror(pattern: number): Promise<Credentials> {
+    var promise = new Promise<Credentials>((resolve, reject) => {
+      this.httpClient.disableToken().post('/auth-mirror', pattern).toPromise().then(
+        result => {
+          let _t = this.credentialsService.decodeToken(result['token']);
+          let _credentials: Credentials = {id: _t.id, alias: _t.alias, email: _t.email, token: result['token']};
+          this.credentialsService.setCredentials(_credentials, true);
           resolve(_credentials);
         },
         () => {
@@ -77,7 +98,6 @@ export class AuthenticationService {
    * @return True if the user was logged out successfully.
    */
   logout(): Observable<boolean> {
-    // Customize credentials invalidation here
     this.credentialsService.setCredentials();
     return of(true);
   }
