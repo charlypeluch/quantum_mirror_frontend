@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from '@app/shared/services/user.service';
 import { NotificationService } from '@app/shared';
 
-import * as PatternLock from 'pattern-lock-js';
+// import * as PatternLock from 'pattern-lock-js';
 
 @Component({
   selector: 'app-security',

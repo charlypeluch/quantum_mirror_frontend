@@ -1,0 +1,21 @@
+@import "src/theme/theme-variables";
+
+.sidenav-content {
+  padding: 8px 16px 0px 16px;
+}
+
+.sidenav-user-item {
+  height: 50px !important;
+
+  img {
+    height: 32px !important;
+    width: 32px !important;
+  }
+  h4 , p {
+    line-height: 20px;
+  }
+}
+
+.sidenav-user-current {
+  background-color: #607d8b75 ;
+}

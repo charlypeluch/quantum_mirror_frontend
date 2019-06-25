@@ -10,6 +10,11 @@ import { QuantumComponent } from './quantum.component';
 import { QuantumAccessComponent } from './quantum-access/quantum-access.component';
 import { QuantumDashboardComponent } from './quantum-dashboard/quantum-dashboard.component';
 
+import { QuantumDashboardService } from './quantum-dashboard/quantum-dashboard.service';
+
+import { MomentModule } from 'ngx-moment';
+import { AngularWeatherWidgetModule, WeatherApiName } from 'angular-weather-widget';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,12 +22,21 @@ import { QuantumDashboardComponent } from './quantum-dashboard/quantum-dashboard
     SharedModule,
     FlexLayoutModule,
     MaterialModule,
-    QuantumRoutingModule
+    QuantumRoutingModule,
+    MomentModule,
+    AngularWeatherWidgetModule.forRoot({
+      key: '02c5a2e26bfa702fb2d879b31ffe4477',
+      name: WeatherApiName.OPEN_WEATHER_MAP,
+      baseUrl: 'http://api.openweathermap.org/data/2.5'
+    })
   ],
   declarations: [
     QuantumComponent,
     QuantumAccessComponent,
     QuantumDashboardComponent
+  ],
+  providers: [
+    QuantumDashboardService
   ],
   exports: [QuantumRoutingModule],
   bootstrap: [QuantumComponent]

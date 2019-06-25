@@ -400,30 +400,61 @@ $quantum-mirror-theme: mat-light-theme(
 
   mat-calendar {
     color: white;
-    
+
     .mat-calendar-arrow {
       border-top-color: rgba(255, 255, 255, 0.75) !important;
     }
-
     .mat-calendar-table-header {
       color: rgba(255, 255, 255, 0.55) !important;
     }
-
     .mat-calendar-table-header-divider::after {
       color: rgba(255, 255, 255, 0.55) !important;
     }
-
     .mat-calendar-body-label {
       color: rgba(255, 255, 255, 0.75) !important;
     }
-
     .mat-calendar-body-cell-content {
       color: white !important;
     }
-
     .mat-calendar-body-today:not(.mat-calendar-body-selected) {
       border-color: rgba(255, 255, 255, 0.55) !important;
     }
+  }
+
+  // WEATHER
+  weather-widget {
+    color: white;
+  }
+  .info.wide {
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
+  .forecast {
+    min-width: 45px !important;
+    padding: 0px !important;
+    width: fit-content !important;
+  }
+  .current {
+    padding: 0px !important;
+    min-width: 110px !important;
+    width: 100%;
+    margin-right: -45px;
+  }
+
+  weather-widget {
+    display: flex !important;
+    position: inherit !important;
+    padding: 0px !important;
+  }
+  weather-forecast {
+    margin-top: 0px !important;
+  }
+  weather-forecast-simple-grid {
+    flex-direction: column !important;
+  }
+  weather-forecast-grid-day {
+    align-items: flex-end !important;
+    font-size: 1em !important;
   }
 
   // .mat-chip {

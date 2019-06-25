@@ -17,29 +17,51 @@
   </mat-sidenav-container>
 
   <!-- MODULES -->
-  <div fxFlex fxLayout="column" class="content-modules">
-    <div fxFlex="50" fxLayout="row" fxLayoutAlign="space-between start">
-      <div fxFlex="30">
-        <h2>{{ moduleNW.value.date }}</h2>
-        <div fxLayout="row" fxLayoutAlign=" start" fxLayoutGap="5px">
-          <h1>{{ moduleNW.value.time }}</h1>
-          <h3 style="font-weight: 200">{{ moduleNW.value.seconds }}</h3>
+  <div fxFlex fxLayout="column" class="content-modules" >
+    <div fxFlex="50" fxLayout="row" fxLayoutAlign="space-between start" class="content-section">
+
+      <!-- MODULE NW -->
+      <div fxFlex="35">
+        <div [hidden]="!panelLeftVisible">
+          <h2>{{ moduleNW?.value.date }}</h2>
+          <div fxLayout="row" fxLayoutAlign=" start" fxLayoutGap="5px">
+            <h1>{{ moduleNW?.value.time }}</h1>
+            <h3 style="font-weight: 200">{{ moduleNW?.value.seconds }}</h3>
+          </div>
         </div>
       </div>
-      <div fxFlex="30" fxLayoutAlign="end ">
-        <p>MODULE NE</p>
+
+      <!-- MODULE NE -->
+      <div fxFlex="25">
+        <div [hidden]="!panelRightVisible">
+        <div fxLayoutAlign="end ">
+          <!-- <p>MODULE NE</p> -->
+          <weather-widget [settings]="this.moduleNE?.config"></weather-widget>
+        </div>
+        </div>
       </div>
+
     </div>
-    <div fxFlex="50" fxLayout="row" fxLayoutAlign="space-between end">
+    <div fxFlex="50"fxLayout="row" fxLayoutAlign="space-between end" class="content-section">
+
+      <!-- MODULE WS -->
       <div fxFlex="30">
-        <p>MODULE WS</p>
+        <div [hidden]="!panelLeftVisible">
+          <div class="content-module-feed" fxLayout="column" fxLayoutAlign=" end">
+            <div *ngFor="let feed of moduleWS?.value.articles | slice:0:5">
+              <h3>{{ feed.publishedAt | amTimeAgo }}, {{ feed.source.name }}</h3>
+              <h2>{{ feed.title }}</h2>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- MODULE SE -->
       <div fxFlex="30">
-        <!-- <mat-card> -->
+        <div [hidden]="!panelRightVisible">
           <mat-calendar></mat-calendar>
-        <!-- </mat-card> -->
+        </div>
       </div>
     </div>
-    <p>Quantum Dashboard</p>
   </div>
 </div>

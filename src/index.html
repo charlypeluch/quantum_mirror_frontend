@@ -14,74 +14,8 @@
 
   <link rel="icon" type="image/x-icon" href="favicon.ico"/>
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
-
-  <!-- <script type="text/javascript" src="assets/js/leap-0.6.4.js"></script>
-  <script type="text/javascript" src="assets/js/leap-plugins-0.1.12.js"></script> -->
-  <!-- <script type="text/javascript" src="assets/js/jquery.min.js"></script> -->
-  <!-- <style>
-    #cursor {
-      width: 60px;
-      height: 60px;
-      position: fixed;
-      margin-left: -50px;
-      margin-top: -50px;
-      z-index: 910;
-      opacity: 0.9;
-      background: black;
-      border-radius: 100%;
-      background: -webkit-radial-gradient(100px 100px, circle, #5cabff, #000);
-      background: -moz-radial-gradient(100px 100px, circle, #5cabff, #000);
-      background: radial-gradient(100px 100px, circle, #5cabff, #000);
-    }
-  </style> -->
-
-  <!-- <script>
-    Leap.loop({
-      hand: function(hand){
-        console.log( hand.screenPosition() );
-      }
-    }).use('screenPosition');
-  </script> -->
 </head>
 <body class="mat-typography quantum">
-
-  <!-- <script type="text/javascript">
-    window.cursor = $('#cursor');
-    window.output = $('#output');
-    Leap.loop({hand: function(hand){
-      var screenPosition = hand.screenPosition(hand.palmPosition);
-      var outputContent = "x: " + (screenPosition[0].toPrecision(4)) + 'px' +
-             "        <br/>y: " + (screenPosition[1].toPrecision(4)) + 'px' +
-             "        <br/>z: " + (screenPosition[2].toPrecision(4)) + 'px';
-
-      console.warn("cursor: "+outputContent);
-      // hide and show the cursor in order to get second-topmost element.
-      cursor.hide();
-      var el = document.elementFromPoint(
-          hand.screenPosition()[0],
-          hand.screenPosition()[1]
-      );
-      cursor.show();
-      if (el){
-        outputContent += '<br>Topmost element: '+ el.tagName + ' #' + el.id +  ' .' + el.className;
-      }
-      output.html(outputContent);
-      cursor.css({
-        left: screenPosition[0] + 'px',
-        top:  screenPosition[1] + 'px'
-      });
-    }})
-    .use('screenPosition', {
-      scale: 1
-    });
-  </script> -->
-
-  <!--[if lt IE 10]>
-  <p>
-    You are using an <strong>outdated</strong> browser.
-    Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
-  </p>
-  <![endif]-->
   <noscript>
     <p>
       This page requires JavaScript to work properly. Please enable JavaScript in your browser.

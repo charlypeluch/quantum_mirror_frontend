@@ -1,10 +1,42 @@
-<div fxFlex>
-  <mat-card>
-    <p>
-      <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo"/>
-    </p>
-    <mat-card-content>
-      Contenido
-    </mat-card-content>
-  </mat-card>
+<div fxFlex fxLayout="column" fxLayoutGap="10px">
+
+  <!-- TOOLBAR CARD -->
+  <div class="toolbar-search">
+    <mat-card>
+      <div>
+        <input fxFlex="100" class="mat-typography" [(ngModel)]="query.filter" (keyup)="applyFilter()" [placeholder]="'Search'">
+        <div fxFlex></div>
+        <button *ngIf="!searchActive" mat-icon-button (click)="toggleSearchToolbar()" [matTooltip]="Search">
+          <mat-icon aria-label="search">search</mat-icon>
+        </button>
+        <button *ngIf="searchActive" mat-icon-button (click)="toggleSearchToolbar()" [matTooltip]="Cancel">
+          <mat-icon aria-label="close">close</mat-icon>
+        </button>
+        <button *ngIf="!searchActive" mat-icon-button (click)="getMirrors()" [matTooltip]="'Refresh'">
+          <mat-icon aria-label="refresh">cached</mat-icon>
+        </button>
+        <button *ngIf="!searchActive" mat-icon-button (click)="openDialog()" [matTooltip]="'Register mirror'">
+          <mat-icon aria-label="add">add</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- CONTENT MIRRORS -->
+  <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="10px grid">
+    <div fxFlex.xs="50%" [fxFlex.xs]="regularDistribution" *ngFor="let mirror of query.content" class="content-mirrors">
+      <mat-card class="item-mirror" (click)="toggleMirror(mirror)">
+        <img class="logo" src="assets/images/mirrors/mirror.png" alt="angular mirror"/>
+        <mat-card-content>
+          <h2>{{ mirror.name }}</h2>
+          <!-- <h3>{{ mirror.location }}</h3> -->
+          <mat-chip-list aria-label="Mirror tags" fxLayoutAlign="center center">
+            <mat-chip *ngIf="mirror.is_active" color="primary" selected>{{ mirror.location }}</mat-chip>
+            <mat-chip *ngIf="!mirror.is_active" color="warn" [matTooltip]="'Inactive'" selected>{{ mirror.location }}</mat-chip>
+          </mat-chip-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
 </div>

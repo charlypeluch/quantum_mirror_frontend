@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CredentialsService, AuthenticationService } from '@app/core';
 import { NotificationService } from '@app/shared';
 
-import * as PatternLock from 'pattern-lock-js';
+// import * as PatternLock from 'pattern-lock-js';
 
 @Component({
   selector: 'app-quantum',
@@ -44,7 +44,6 @@ export class QuantumAccessComponent implements OnInit, OnDestroy {
 
     this.patternLock = new PatternLock("#quantum-lock", {
       onPattern: function(pattern) {
-        console.warn("PATTERN: ", pattern);
         this.quantumLogin(pattern);
       }.bind(this)
     });
@@ -534,6 +533,7 @@ export class QuantumAccessComponent implements OnInit, OnDestroy {
       if(frame.valid) {
         try {
           this._leapCursorDraw(frame);
+
         }
         catch(error) {
           console.error(error);
@@ -551,5 +551,7 @@ export class QuantumAccessComponent implements OnInit, OnDestroy {
     this.notificationService.openNotification('Clear lock!', 'Accept', 'quantum');
   }
 
-  ngOnDestroy() { }
+  ngOnDestroy() {
+    this._leapCursorClear();
+  }
 }

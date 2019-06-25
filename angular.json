@@ -31,13 +31,13 @@
             ],
             "styles": [
               "src/main.scss",
-              "./node_modules/pattern-lock-js/patternlock.css"
+              "src/assets/css/patternlock.css"
             ],
             "scripts": [
-              "./node_modules/pattern-lock-js/patternlock.js",
               "./node_modules/jquery/dist/jquery.js",
               "src/assets/js/leap-0.6.4.js",
-              "src/assets/js/leap-plugins-0.1.12.js"
+              "src/assets/js/leap-plugins-0.1.12.js",
+              "src/assets/js/patternlock.js"
             ]
           },
           "configurations": {

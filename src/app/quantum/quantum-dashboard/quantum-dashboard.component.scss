@@ -6,12 +6,31 @@
 .content-modules {
   padding: 25px 16px 50px 16px;
 }
+.content-section {
+  overflow: hidden;
+}
+
+.content-module-feed {
+
+  h2 {
+    line-height: 1.2em;
+    font-size: 16px;
+  }
+  h3 {
+    font-weight: 200;
+    padding: 0px;
+    margin: 0px;
+    font-size: 16px;
+  }
+}
 
 .toolbar-user-avatar {
   width: 30px;
   border-radius: 50%;
   margin-bottom: 5px;
 }
+
+
 
 
 // MAT-CALENDAR
