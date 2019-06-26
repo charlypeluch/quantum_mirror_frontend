@@ -7,6 +7,7 @@ import { MaterialModule } from '@app/material.module';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
 import { SecurityComponent } from './security/security.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
 import { HelpComponent } from './help/help.component';
 
 
@@ -21,6 +22,7 @@ import { HelpComponent } from './help/help.component';
   declarations: [
     ProfileComponent,
     SecurityComponent,
+    ConfigurationComponent,
     HelpComponent,
   ],
   providers: []

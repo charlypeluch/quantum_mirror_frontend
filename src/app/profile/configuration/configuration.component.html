@@ -1,0 +1,39 @@
+<div class="profile-panel-container-list">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title fxLayoutAlign="start center">
+        <mat-icon matListIcon>security</mat-icon>
+        <span translate style="padding-left: 10px">Configuration Global</span>
+      </mat-panel-title>
+      <mat-panel-description fxLayoutAlign="end center">
+        <div [className]="configurations.global.id ? 'profile-setting-configured' : 'profile-setting-not-configured'">
+          <span *ngIf="configurations.global.id" translate>Configured</span>
+          <span *ngIf="!configurations.global.id" translate>Not configured</span>
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div fxLayout="column" fxLayoutAlign="start start">
+      <div fxFlex fxFlexLayout="row" fxLayoutAlign="space-between center">
+        <p translate>The global configuration is applicated for all mirror without individual configuration</p>
+      </div>
+      <div fxFlex xLayout="column">
+        <div class="example-container">
+          <mat-form-field>
+            <input matInput [(ngModel)]="configurations.global['name']" placeholder="Name">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [(ngModel)]="configurations.global['session_expiration']" placeholder="Expiration">
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput placeholder="Textarea"></textarea>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Select">
+              <mat-option value="option">Option</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</div>

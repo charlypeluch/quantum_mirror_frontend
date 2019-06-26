@@ -5,3 +5,5 @@ export * from './services/theme.service';
 export * from './services/notification.service';
 export * from './services/user.service';
 export * from './services/mirror.service';
+export * from './services/configuration.service';
+export * from './services/modules.service';
