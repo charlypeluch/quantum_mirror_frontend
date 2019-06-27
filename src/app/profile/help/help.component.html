@@ -1,10 +1,15 @@
 <div>
   <mat-card>
-    <mat-card-header>
-      HEADER
-    </mat-card-header>
     <mat-card-content>
-      CONTENT
+      <div fxFlex fxLayout="column" fxLayoutAlign="start start">
+        <p translate>You can contact the technical team through the following form</p>
+        <mat-form-field style="width: 100%">
+          <textarea fxFlex="100" matInput cdkAutosizeMinRows="10" cdkAutosizeMaxRows="15" [placeholder]="'Leave a comment' | translate"></textarea>
+        </mat-form-field>
+        <button mat-flat-button color="primary">
+          <span translate>Send</span>
+        </button>
+      </div>
     </mat-card-content>
   </mat-card>
 </div>

@@ -52,13 +52,13 @@ export class ConfigurationComponent implements OnInit {
   }
 
   toggleModule(module, configuration) {
-    if (module.name == 'Module Clock')
+    if (module.name == 'Módulo de Reloj')
       configuration.module_no = configuration.module_no == module.id ? undefined: module.id;
-    else if (module.name == 'Module Weather')
+    else if (module.name == 'Módulo de Clima')
       configuration.module_ne = configuration.module_ne == module.id ? undefined: module.id;
-    else if (module.name == 'Module Feed')
+    else if (module.name == 'Módulo de Noticias')
       configuration.module_so = configuration.module_so == module.id ? undefined: module.id;
-    else if (module.name == 'Module Calendar')
+    else if (module.name == 'Módulo de Calendario')
       configuration.module_se = configuration.module_se == module.id ? undefined: module.id;
   }
 

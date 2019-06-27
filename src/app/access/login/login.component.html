@@ -16,9 +16,7 @@
     <mat-slide-toggle color="primary" formControlName="remember"><span translate>Remember me</span></mat-slide-toggle>
     <br />
 
-    <div class="login-error" [hidden]="!isError" translate>
-      Email or password incorrect.
-    </div>
+    <div class="login-error" [hidden]="!isError" translate>Email or password incorrect</div>
 
     <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid || isLoading">
       <span translate>Login</span>

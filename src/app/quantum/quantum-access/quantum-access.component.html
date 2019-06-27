@@ -27,7 +27,7 @@
 
     <!-- MESSAGES -->
     <div fxLayout="column">
-      <button fxFlex="100" mat-raised-button color="accent" *ngIf="!leapController.connected()">Leap Motion not connected</button>
+      <button fxFlex="100" mat-raised-button color="accent" *ngIf="!leapController.connected()" translate>Leap Motion not connected</button>
     </div>
     <br>
 
@@ -38,7 +38,7 @@
       </button>
     </div>
     <br>
-    <div fxLayout="row">
+    <!-- <div fxLayout="row">
       <button fxFlex mat-stroked-button (click)="connectLeap()">
         <span translate>Connect Leap</span>
       </button>
@@ -60,6 +60,6 @@
       <button fxFlex mat-stroked-button (click)="_leapCursorSimulateEvent()">
         <span translate>Simulate Events</span>
       </button>
-    </div>
+    </div> -->
   </div>
 </div>

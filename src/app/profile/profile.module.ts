@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from '@app/material.module';
@@ -15,6 +16,7 @@ import { HelpComponent } from './help/help.component';
   imports: [
     CommonModule,
     FormsModule,
+    TranslateModule,
     FlexLayoutModule,
     MaterialModule,
     ProfileRoutingModule

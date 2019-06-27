@@ -1,6 +1,6 @@
 <div>
   <mat-toolbar class="quantum-header" fxLayoutAlign="center center">
-    <h1>Mirror Detail</h1>
+    <h1 translate>Mirror Detail</h1>
   </mat-toolbar>
   <mat-divider></mat-divider>
   <div fxLayout="column" fxLayoutAlign="start start" class="sidenav-content">
@@ -8,39 +8,39 @@
   </div>
   <mat-list>
     <mat-divider></mat-divider>
-    <h2 mat-subheader>Information</h2>
+    <h2 mat-subheader translate>Information</h2>
     <mat-list-item>
-      <h4 mat-line>Code</h4>
+      <h4 mat-line translate>Code</h4>
       <p mat-line>{{ mirror?.code }}</p>
     </mat-list-item>
     <mat-list-item>
-      <h4 mat-line>Location</h4>
+      <h4 mat-line translate>Location</h4>
       <p mat-line>{{ mirror?.location }}</p>
     </mat-list-item>
     <mat-list-item>
-      <h4 mat-line>Register Date</h4>
+      <h4 mat-line translate>Register Date</h4>
       <p mat-line [matTooltip]="mirror?.created_at">{{ mirror?.created_at | amTimeAgo }}</p>
     </mat-list-item>
     <mat-list-item>
-      <h4 mat-line>Shared Status</h4>
-      <p mat-line>{{ mirror?.is_shared ? 'Shared':'Not shared' }}</p>
+      <h4 mat-line translate>Shared Status</h4>
+      <p mat-line translate>{{ mirror?.is_shared ? 'Shared':'Not shared' }}</p>
     </mat-list-item>
     <mat-list-item>
-      <h4 mat-line>Status</h4>
+      <h4 mat-line translate>Status</h4>
       <mat-chip-list aria-label="Mirror status tag">
-        <mat-chip *ngIf="mirror?.is_active" color="primary" selected>Active</mat-chip>
-        <mat-chip *ngIf="!mirror?.is_active" color="warn" selected>Inactive</mat-chip>
+        <mat-chip *ngIf="mirror?.is_active" color="primary" selected translate>Active</mat-chip>
+        <mat-chip *ngIf="!mirror?.is_active" color="warn" selected translate>Inactive</mat-chip>
       </mat-chip-list>
     </mat-list-item>
     <mat-list-item>
-      <button fxFlex style="padding: 0px 16px;" mat-button mat-flat-button color="accent" (click)="unassignUserMirror()">Delete</button>
+      <button fxFlex style="padding: 0px 16px;" mat-button mat-flat-button color="accent" (click)="unassignUserMirror()" translate>Delete</button>
     </mat-list-item>
     <mat-divider></mat-divider>
     <div>
       <h3 mat-subheader style="margin-top: 0px;">
-        <span>Shared Users</span>
+        <span translate>Shared Users</span>
         <div fxFlex></div>
-        <button mat-icon-button (click)="getMirrorUsers()" [matTooltip]="'Refresh'">
+        <button mat-icon-button (click)="getMirrorUsers()" [matTooltip]="'Refresh' | translate">
           <mat-icon aria-label="refresh">cached</mat-icon>
         </button>
       </h3>

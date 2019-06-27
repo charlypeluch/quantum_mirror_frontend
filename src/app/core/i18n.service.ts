@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
+import * as moment from 'moment';
+
 import { Logger } from './logger.service';
 import esES from '../../translations/es-ES.json';
 import enUS from '../../translations/en-US.json';
@@ -77,6 +79,11 @@ export class I18nService {
     if (!isSupportedLanguage) {
       language = this.defaultLanguage;
     }
+
+    if (language == 'es-ES')
+      moment.locale('es-es');
+    else
+      moment.locale('en-en');
 
     log.debug(`Language set to ${language}`);
     this.translateService.use(language);

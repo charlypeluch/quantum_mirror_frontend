@@ -3,9 +3,7 @@
     <h1 fxLayoutAlign="center"><span style="font-weight: 200">Quantum</span><span>Mirror</span></h1>
   </div>
   <div class="access-container" fxLayout="row" fxLayoutAlign="center">
-    <!-- <mat-card fxFlex="90%" fxFlex.sm="66%" fxFlex.md="50%" fxFlex.gt-md="33%"> -->
     <mat-card fxFlex.xs="90%">
-
       <mat-card-content>
         <nav mat-tab-nav-bar>
           <a mat-tab-link
@@ -13,12 +11,11 @@
           [routerLink]="link.link"
           routerLinkActive #rla="routerLinkActive"
           [active]="rla.isActive" translate>
-            {{link.label}}
+            {{ link.label }}
           </a>
         </nav>
         <router-outlet></router-outlet>
       </mat-card-content>
-
     </mat-card>
   </div>
 </div>

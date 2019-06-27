@@ -16,13 +16,10 @@
             <mat-icon>question_answer</mat-icon>
             <span translate>About</span>
           </a>
-          <!-- <mat-divider></mat-divider> -->
         </mat-list>
       </nav>
     </mat-sidenav>
     <mat-sidenav-content>
-
-
       <mat-sidenav-container fxFill>
         <mat-sidenav #sidenavContent mode="over" opened="false" position="end">
           <app-dashboard-sidenav [sidenav]="sidenavContent"></app-dashboard-sidenav>
@@ -33,7 +30,7 @@
               <button mat-icon-button (click)="sidenav.toggle()" fxHide.gt-sm>
                 <mat-icon>menu</mat-icon>
               </button>
-              <h1>{{title}}</h1>
+              <h1>{{ title }}</h1>
             </div>
             <span fxFlex></span>
             <div>
@@ -47,9 +44,7 @@
                 <mat-icon>format_paint</mat-icon>
               </button>
               <mat-menu #themeMenu="matMenu">
-                <button mat-menu-item *ngFor="let theme of themes" (click)="toggleTheme(theme)">
-                  {{theme}}
-                </button>
+                <button mat-menu-item *ngFor="let theme of themes" (click)="toggleTheme(theme)">{{ theme }}</button>
               </mat-menu>
             </div>
             <div>
@@ -57,26 +52,9 @@
                 <mat-icon>language</mat-icon>
               </button>
               <mat-menu #languageMenu="matMenu">
-                <button mat-menu-item *ngFor="let language of languages" (click)="setLanguage(language)">
-                  {{language}}
-                </button>
+                <button mat-menu-item *ngFor="let language of languages" (click)="setLanguage(language)" translate>{{ language }}</button>
               </mat-menu>
             </div>
-            <!-- <div>
-              <button mat-icon-button [matMenuTriggerFor]="userMenu">
-                <mat-icon>person</mat-icon>
-              </button>
-              <mat-menu #userMenu="matMenu">
-                <mat-list>
-                  <mat-list-item>
-                    <span translate>Logged in as</span>&nbsp;<b>{{ alias }}</b>
-                  </mat-list-item>
-                  <mat-divider></mat-divider>
-                </mat-list>
-                <button mat-menu-item (click)="logout()" translate>Logout</button>
-              </mat-menu>
-            </div> -->
-
             <a mat-button [matMenuTriggerFor]="userMenu">
               <img class="toolbar-user-avatar" src="/assets/images/avatars/avatar.png" alt="{{ alias }}">
               <span>{{ alias }}</span>

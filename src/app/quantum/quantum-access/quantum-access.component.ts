@@ -49,6 +49,7 @@ export class QuantumAccessComponent implements OnInit, OnDestroy {
     });
 
     this.leapController = new Leap.Controller({ enableGestures: true });
+    this.connectLeap();
   }
 
   quantumLogin(pattern:number) {
@@ -421,7 +422,6 @@ export class QuantumAccessComponent implements OnInit, OnDestroy {
     element.dispatchEvent(_event);
   }
 
-
   _leapCursorClear(hand='mix') {
     let _touchPointers = this.leapCursor.touchPointersLeft.concat(this.leapCursor.touchPointersRight);
 
@@ -434,6 +434,14 @@ export class QuantumAccessComponent implements OnInit, OnDestroy {
 
     for (let t of _touchPointers) {
       t.style.visibility = 'hidden';
+    }
+  }
+
+  _leapCursorForceClear() {
+    let div_cursors = document.querySelectorAll('[id^="leap_hand_"]')
+
+    for(let c of Array.from(div_cursors)){
+      c.remove()
     }
   }
 
@@ -526,6 +534,7 @@ export class QuantumAccessComponent implements OnInit, OnDestroy {
   // }
 
   connectLeap() {
+    this._leapCursorForceClear();
     this._leapCursorInit();
     this.leapController.connect();
 

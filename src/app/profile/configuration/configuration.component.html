@@ -3,7 +3,7 @@
     <mat-expansion-panel-header>
       <mat-panel-title fxLayoutAlign="start center">
         <mat-icon matListIcon>security</mat-icon>
-        <span translate style="padding-left: 10px">Config. Global</span>
+        <span style="padding-left: 10px" translate>Config. Global</span>
       </mat-panel-title>
       <mat-panel-description fxLayoutAlign="end center">
         <div [className]="configuration.global.length > 0 ? 'profile-setting-configured' : 'profile-setting-not-configured'">
@@ -22,15 +22,15 @@
         <form *ngIf="template_global && configuration.global.length == 0">
           <div fxFlex fxLayout="column">
             <mat-form-field>
-              <input matInput [(ngModel)]="configuration_global.name" [ngModelOptions]="{standalone: true}" placeholder="Name">
+              <input matInput [(ngModel)]="configuration_global.name" [ngModelOptions]="{standalone: true}" [placeholder]="'Name' | translate">
             </mat-form-field>
             <mat-form-field>
-              <input matInput type="number" [(ngModel)]="configuration_global.session_expiration" [ngModelOptions]="{standalone: true}" placeholder="Expiration">
+              <input matInput type="number" [(ngModel)]="configuration_global.session_expiration" [ngModelOptions]="{standalone: true}" [placeholder]="'Expiration' | translate">
             </mat-form-field>
             <section fxFlex fxLayout="column" fxLayoutAlign="start start">
               <div *ngFor="let module of modules" fxLayout="row">
                 <mat-checkbox (change)="toggleModule(module, configuration_global)" color="primary">{{ module.name }}</mat-checkbox>
-                <input *ngIf="module.is_configurable" matInput [(ngModel)]="configuration_global.module_ne_conf" [ngModelOptions]="{standalone: true}" placeholder="City">
+                <input *ngIf="module.is_configurable" matInput [(ngModel)]="configuration_global.module_ne_conf" [ngModelOptions]="{standalone: true}" [placeholder]="'City' | translate">
               </div>
             </section>
             <br>
@@ -44,19 +44,19 @@
         <form *ngIf="configuration.global.length > 0">
           <div fxFlex fxLayout="column" *ngFor="let global of configuration.global">
             <mat-form-field>
-              <input matInput value="{{ global.name }}" disabled="true" placeholder="Name">
+              <input matInput value="{{ global.name }}" disabled="true" [placeholder]'="'Name' | translate">
             </mat-form-field>
             <mat-form-field>
-              <input matInput type="number" value="{{ global.session_expiration }}" disabled="true" placeholder="Expiration">
+              <input matInput type="number" value="{{ global.session_expiration }}" disabled="true" [placeholder]'="'Expiration' | translate">
             </mat-form-field>
             <section fxFlex fxLayout="column" fxLayoutAlign="start start">
-              <mat-checkbox [checked]="global.module_no" color="primary" disabled="true">Module Clock</mat-checkbox>
+              <mat-checkbox [checked]="global.module_no" color="primary" disabled="true" translate>Module Clock</mat-checkbox>
               <div fxLayout="row">
-                <mat-checkbox [checked]="global.module_ne" color="primary" disabled="true">Module Weather</mat-checkbox>
-                <input matInput value="{{ global.module_ne_conf?.city }}" placeholder="City" disabled="true">
+                <mat-checkbox [checked]="global.module_ne" color="primary" disabled="true" translate>Module Weather</mat-checkbox>
+                <input matInput value="{{ global.module_ne_conf?.city }}" [placeholder]="'City' | translate" disabled="true">
               </div>
-              <mat-checkbox [checked]="global.module_so" color="primary" disabled="true">Module Feed</mat-checkbox>
-              <mat-checkbox [checked]="global.module_se" color="primary" disabled="true">Module Calendar</mat-checkbox>
+              <mat-checkbox [checked]="global.module_so" color="primary" disabled="true" translate>Module Feed</mat-checkbox>
+              <mat-checkbox [checked]="global.module_se" color="primary" disabled="true" translate>Module Calendar</mat-checkbox>
             </section>
             <br>
             <button fxFlex mat-flat-button color="primary" (click)="deleteUserConfiguration(global.id)">
@@ -79,7 +79,7 @@
     <mat-expansion-panel-header>
       <mat-panel-title fxLayoutAlign="start center">
         <mat-icon matListIcon>security</mat-icon>
-        <span translate style="padding-left: 10px">Config. Individual</span>
+        <span style="padding-left: 10px" translate>Config. Individual</span>
       </mat-panel-title>
       <mat-panel-description fxLayoutAlign="end center">
         <div [className]="configuration.individual.length > 0 ? 'profile-setting-configured' : 'profile-setting-not-configured'">
@@ -98,13 +98,13 @@
         <form *ngIf="template_individual">
           <div fxFlex fxLayout="column">
             <mat-form-field>
-              <input matInput [(ngModel)]="configuration_individual.name" [ngModelOptions]="{standalone: true}" placeholder="Name">
+              <input matInput [(ngModel)]="configuration_individual.name" [ngModelOptions]="{standalone: true}" [placeholder]="'Name' | translate">
             </mat-form-field>
             <mat-form-field>
-              <input matInput type="number" [(ngModel)]="configuration_individual.session_expiration" [ngModelOptions]="{standalone: true}" placeholder="Expiration">
+              <input matInput type="number" [(ngModel)]="configuration_individual.session_expiration" [ngModelOptions]="{standalone: true}" [placeholder]="'Expiration' | translate">
             </mat-form-field>
             <mat-form-field>
-              <mat-label>Mirrors</mat-label>
+              <mat-label translate>Mirrors</mat-label>
               <mat-select [(ngModel)]="configuration_individual.mirror_id" [ngModelOptions]="{standalone: true}">
                 <mat-option *ngFor="let mirror of mirrors_availables" [value]="mirror.id">
                   {{ mirror.name }}
@@ -114,7 +114,7 @@
             <section fxFlex fxLayout="column" fxLayoutAlign="start start">
               <div *ngFor="let module of modules" fxLayout="row">
                 <mat-checkbox (change)="toggleModule(module, configuration_individual)" color="primary">{{ module.name }}</mat-checkbox>
-                <input *ngIf="module.is_configurable" matInput [(ngModel)]="configuration_individual.module_ne_conf" [ngModelOptions]="{standalone: true}" placeholder="City">
+                <input *ngIf="module.is_configurable" matInput [(ngModel)]="configuration_individual.module_ne_conf" [ngModelOptions]="{standalone: true}" [placeholder]="'City' | translate">
               </div>
             </section>
             <br>
@@ -131,22 +131,22 @@
             <div fxLayout="column">
               <div fxFlex fxLayout="column" *ngFor="let individual of configuration.individual">
                 <mat-form-field>
-                  <input matInput value="{{ individual.name }}" disabled="true" placeholder="Name">
+                  <input matInput value="{{ individual.name }}" disabled="true" [placeholder]="'Name' | translate">
                 </mat-form-field>
                 <mat-form-field>
-                  <input matInput value="{{ individual.mirror?.name }}" disabled="true" placeholder="Mirror">
+                  <input matInput value="{{ individual.mirror?.name }}" disabled="true" [placeholder]="'Mirror' | translate">
                 </mat-form-field>
                 <mat-form-field>
-                  <input matInput type="number" value="{{ individual.session_expiration }}" disabled="true" placeholder="Expiration">
+                  <input matInput type="number" value="{{ individual.session_expiration }}" disabled="true" [placeholder]="'Expiration' | translate">
                 </mat-form-field>
                 <section fxFlex fxLayout="column" fxLayoutAlign="start start">
-                  <mat-checkbox [checked]="individual.module_no" color="primary" disabled="true">Module Clock</mat-checkbox>
+                  <mat-checkbox [checked]="individual.module_no" color="primary" disabled="true" translate>Module Clock</mat-checkbox>
                   <div fxLayout="row">
-                    <mat-checkbox [checked]="individual.module_ne" color="primary" disabled="true">Module Weather</mat-checkbox>
-                    <input matInput value="{{ individual.module_ne_conf?.city }}" placeholder="City" disabled="true">
+                    <mat-checkbox [checked]="individual.module_ne" color="primary" disabled="true" translate>Module Weather</mat-checkbox>
+                    <input matInput value="{{ individual.module_ne_conf?.city }}" [placeholder]="'City' | translate" disabled="true">
                   </div>
-                  <mat-checkbox [checked]="individual.module_so" color="primary" disabled="true">Module Feed</mat-checkbox>
-                  <mat-checkbox [checked]="individual.module_se" color="primary" disabled="true">Module Calendar</mat-checkbox>
+                  <mat-checkbox [checked]="individual.module_so" color="primary" disabled="true" translate>Module Feed</mat-checkbox>
+                  <mat-checkbox [checked]="individual.module_se" color="primary" disabled="true" translate>Module Calendar</mat-checkbox>
                 </section>
                 <br>
                 <button fxFlex mat-flat-button color="primary" (click)="deleteUserConfiguration(individual.id)">

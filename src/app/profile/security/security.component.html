@@ -4,7 +4,7 @@
     <mat-expansion-panel-header>
       <mat-panel-title fxLayoutAlign="start center">
         <mat-icon matListIcon>security</mat-icon>
-        <span translate style="padding-left: 10px">Pattern unlock</span>
+        <span style="padding-left: 10px" translate>Pattern unlock</span>
       </mat-panel-title>
       <mat-panel-description fxLayoutAlign="end center">
         <div [className]="userProfile.pattern ? 'profile-setting-configured' : 'profile-setting-not-configured'">
@@ -55,7 +55,7 @@
     <mat-expansion-panel-header>
       <mat-panel-title fxLayoutAlign="start center">
         <mat-icon matListIcon>face</mat-icon>
-        <span translate style="padding-left: 10px">Face unlock</span>
+        <span style="padding-left: 10px" translate>Face unlock</span>
       </mat-panel-title>
       <mat-panel-description fxLayoutAlign="end center">
         <div [className]="userProfile.facial ? 'profile-setting-configured' : 'profile-setting-not-configured'">
@@ -77,7 +77,7 @@
         </div> -->
       </div>
       <div fxFlex fxLayout="column" fxLayoutAlign="space-between start">
-        <p translate>The unlock pattern allows you to unlock the mirror if you have a LeapMotion™ device connected</p>
+        <p translate>The unlock face allows you to unlock the mirror if you have a web camera device connected</p>
         <!-- <button fxFlex mat-flat-button color="primary">
           <span translate>Upload</span>
         </button> -->

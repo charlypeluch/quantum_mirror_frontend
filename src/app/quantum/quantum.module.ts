@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { SharedModule } from '../shared';
@@ -20,6 +21,7 @@ import { AngularWeatherWidgetModule, WeatherApiName } from 'angular-weather-widg
     CommonModule,
     ReactiveFormsModule,
     SharedModule,
+    TranslateModule,
     FlexLayoutModule,
     MaterialModule,
     QuantumRoutingModule,
