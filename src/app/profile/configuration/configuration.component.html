@@ -3,36 +3,164 @@
     <mat-expansion-panel-header>
       <mat-panel-title fxLayoutAlign="start center">
         <mat-icon matListIcon>security</mat-icon>
-        <span translate style="padding-left: 10px">Configuration Global</span>
+        <span translate style="padding-left: 10px">Config. Global</span>
       </mat-panel-title>
       <mat-panel-description fxLayoutAlign="end center">
-        <div [className]="configurations.global.id ? 'profile-setting-configured' : 'profile-setting-not-configured'">
-          <span *ngIf="configurations.global.id" translate>Configured</span>
-          <span *ngIf="!configurations.global.id" translate>Not configured</span>
+        <div [className]="configuration.global.length > 0 ? 'profile-setting-configured' : 'profile-setting-not-configured'">
+          <span *ngIf="configuration.global.length > 0 " translate>Configured</span>
+          <span *ngIf="configuration.global.length == 0" translate>Not configured</span>
         </div>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <div fxLayout="column" fxLayoutAlign="start start">
-      <div fxFlex fxFlexLayout="row" fxLayoutAlign="space-between center">
-        <p translate>The global configuration is applicated for all mirror without individual configuration</p>
-      </div>
-      <div fxFlex xLayout="column">
-        <div class="example-container">
-          <mat-form-field>
-            <input matInput [(ngModel)]="configurations.global['name']" placeholder="Name">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput [(ngModel)]="configurations.global['session_expiration']" placeholder="Expiration">
-          </mat-form-field>
-          <mat-form-field>
-            <textarea matInput placeholder="Textarea"></textarea>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-select placeholder="Select">
-              <mat-option value="option">Option</mat-option>
-            </mat-select>
-          </mat-form-field>
+    <div fxLayout="column">
+      <div fxLayout="column" fxLayoutAlign="start start">
+        <div fxFlex fxFlexLayout="row" fxLayoutAlign="space-between center">
+          <p translate>The global configuration is applicated for all mirror without individual configuration</p>
         </div>
+
+        <!-- CREATE GLOBAL CONFIG -->
+        <form *ngIf="template_global && configuration.global.length == 0">
+          <div fxFlex fxLayout="column">
+            <mat-form-field>
+              <input matInput [(ngModel)]="configuration_global.name" [ngModelOptions]="{standalone: true}" placeholder="Name">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="number" [(ngModel)]="configuration_global.session_expiration" [ngModelOptions]="{standalone: true}" placeholder="Expiration">
+            </mat-form-field>
+            <section fxFlex fxLayout="column" fxLayoutAlign="start start">
+              <div *ngFor="let module of modules" fxLayout="row">
+                <mat-checkbox (change)="toggleModule(module, configuration_global)" color="primary">{{ module.name }}</mat-checkbox>
+                <input *ngIf="module.is_configurable" matInput [(ngModel)]="configuration_global.module_ne_conf" [ngModelOptions]="{standalone: true}" placeholder="City">
+              </div>
+            </section>
+            <br>
+            <button fxFlex mat-flat-button color="accent" (click)="postUserConfiguration('global')">
+              <span translate>Save</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- LIST GLOBAL CONFIG -->
+        <form *ngIf="configuration.global.length > 0">
+          <div fxFlex fxLayout="column" *ngFor="let global of configuration.global">
+            <mat-form-field>
+              <input matInput value="{{ global.name }}" disabled="true" placeholder="Name">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="number" value="{{ global.session_expiration }}" disabled="true" placeholder="Expiration">
+            </mat-form-field>
+            <section fxFlex fxLayout="column" fxLayoutAlign="start start">
+              <mat-checkbox [checked]="global.module_no" color="primary" disabled="true">Module Clock</mat-checkbox>
+              <div fxLayout="row">
+                <mat-checkbox [checked]="global.module_ne" color="primary" disabled="true">Module Weather</mat-checkbox>
+                <input matInput value="{{ global.module_ne_conf?.city }}" placeholder="City" disabled="true">
+              </div>
+              <mat-checkbox [checked]="global.module_so" color="primary" disabled="true">Module Feed</mat-checkbox>
+              <mat-checkbox [checked]="global.module_se" color="primary" disabled="true">Module Calendar</mat-checkbox>
+            </section>
+            <br>
+            <button fxFlex mat-flat-button color="primary" (click)="deleteUserConfiguration(global.id)">
+              <span translate>Delete</span>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div fxFlex="100" fxLayout="row" fxLayoutAlign="end end">
+        <div fxFlex></div>
+        <button mat-stroked-button color="primary" *ngIf="configuration.global.length == 0" (click)="template_global = !template_global">
+          <span translate>Create</span>
+        </button>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title fxLayoutAlign="start center">
+        <mat-icon matListIcon>security</mat-icon>
+        <span translate style="padding-left: 10px">Config. Individual</span>
+      </mat-panel-title>
+      <mat-panel-description fxLayoutAlign="end center">
+        <div [className]="configuration.individual.length > 0 ? 'profile-setting-configured' : 'profile-setting-not-configured'">
+          <span *ngIf="configuration.individual.length > 0 " translate>Configured</span>
+          <span *ngIf="configuration.individual.length == 0" translate>Not configured</span>
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div fxLayout="column">
+      <div fxLayout="column" fxLayoutAlign="start start">
+        <div fxFlex fxFlexLayout="row" fxLayoutAlign="space-between center">
+          <p translate>The individual configuration is applicated in a mirror specifig</p>
+        </div>
+
+        <!-- CREATE GLOBAL CONFIG -->
+        <form *ngIf="template_individual">
+          <div fxFlex fxLayout="column">
+            <mat-form-field>
+              <input matInput [(ngModel)]="configuration_individual.name" [ngModelOptions]="{standalone: true}" placeholder="Name">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="number" [(ngModel)]="configuration_individual.session_expiration" [ngModelOptions]="{standalone: true}" placeholder="Expiration">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Mirrors</mat-label>
+              <mat-select [(ngModel)]="configuration_individual.mirror_id" [ngModelOptions]="{standalone: true}">
+                <mat-option *ngFor="let mirror of mirrors_availables" [value]="mirror.id">
+                  {{ mirror.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <section fxFlex fxLayout="column" fxLayoutAlign="start start">
+              <div *ngFor="let module of modules" fxLayout="row">
+                <mat-checkbox (change)="toggleModule(module, configuration_individual)" color="primary">{{ module.name }}</mat-checkbox>
+                <input *ngIf="module.is_configurable" matInput [(ngModel)]="configuration_individual.module_ne_conf" [ngModelOptions]="{standalone: true}" placeholder="City">
+              </div>
+            </section>
+            <br>
+            <button fxFlex mat-flat-button color="accent" (click)="postUserConfiguration('individual')">
+              <span translate>Save</span>
+            </button>
+          </div>
+          <mat-divider></mat-divider>
+          <br>
+        </form>
+
+        <!-- LIST GLOBAL CONFIG -->
+          <form *ngIf="configuration.individual.length > 0">
+            <div fxLayout="column">
+              <div fxFlex fxLayout="column" *ngFor="let individual of configuration.individual">
+                <mat-form-field>
+                  <input matInput value="{{ individual.name }}" disabled="true" placeholder="Name">
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput value="{{ individual.mirror?.name }}" disabled="true" placeholder="Mirror">
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput type="number" value="{{ individual.session_expiration }}" disabled="true" placeholder="Expiration">
+                </mat-form-field>
+                <section fxFlex fxLayout="column" fxLayoutAlign="start start">
+                  <mat-checkbox [checked]="individual.module_no" color="primary" disabled="true">Module Clock</mat-checkbox>
+                  <div fxLayout="row">
+                    <mat-checkbox [checked]="individual.module_ne" color="primary" disabled="true">Module Weather</mat-checkbox>
+                    <input matInput value="{{ individual.module_ne_conf?.city }}" placeholder="City" disabled="true">
+                  </div>
+                  <mat-checkbox [checked]="individual.module_so" color="primary" disabled="true">Module Feed</mat-checkbox>
+                  <mat-checkbox [checked]="individual.module_se" color="primary" disabled="true">Module Calendar</mat-checkbox>
+                </section>
+                <br>
+                <button fxFlex mat-flat-button color="primary" (click)="deleteUserConfiguration(individual.id)">
+                  <span translate>Delete</span>
+                </button>
+              </div>
+            </div>
+          </form>
+      </div>
+      <div fxFlex="100" fxLayout="row" fxLayoutAlign="end end">
+        <div fxFlex></div>
+        <button mat-stroked-button color="primary" (click)="template_individual = !template_individual" [disabled]="mirrors_availables.length == 0">
+          <span translate>Create</span>
+        </button>
       </div>
     </div>
   </mat-expansion-panel>

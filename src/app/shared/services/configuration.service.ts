@@ -14,6 +14,14 @@ export class ConfigurationService {
     return this.httpClient.get('/configurations/user').toPromise();
   }
 
+  postUserConfiguration(configuration): Promise<any> {
+    return this.httpClient.post('/configurations', configuration).toPromise();
+  }
+
+  deleteUserConfiguration(configurationId): Promise<any> {
+    return this.httpClient.delete('/configurations/'+configurationId).toPromise();
+  }
+
   // getMirrorUsers(mirrorId:number): Promise<any> {
   //   return this.httpClient.get('/mirrors/'+mirrorId+'/users').toPromise();
   // }

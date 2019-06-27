@@ -15,22 +15,29 @@ export class ConfigurationComponent implements OnInit {
 
   modules:any = [];
   mirrors:any = [];
-  configurations = {global: {}, individual: []};
+  mirrors_availables:any = [];
+  configuration = {global: [], individual: []};
 
   configuration_template = {
-    name: '',
     mirror_id: undefined,
+    user_id: undefined,
+    name: undefined,
     session_expiration: 0,
-    module_ne: undefined,
-    module_se: undefined,
-    module_so: undefined,
     module_no: undefined,
-    module_ne_conf: '',
-    module_se_conf: '',
-    module_so_conf: '',
-    module_no_conf: '',
+    module_ne: undefined,
+    module_so: undefined,
+    module_se: undefined,
+    module_ne_conf: undefined,
+    module_se_conf: undefined,
+    module_so_conf: undefined,
+    module_no_conf: undefined,
     is_global: false
   };
+
+  template_global:boolean = false;
+  template_individual:boolean = false;
+  configuration_global = Object.assign({}, this.configuration_template);
+  configuration_individual = Object.assign({}, this.configuration_template);
 
   constructor(public activatedRoute: ActivatedRoute,
               private mirrorService: MirrorService,
@@ -41,32 +48,78 @@ export class ConfigurationComponent implements OnInit {
     this.activatedRoute.parent.data.subscribe((data) => {
       this.userProfile = data.userProfile;
     });
+    this.getData();
+  }
 
+  toggleModule(module, configuration) {
+    if (module.name == 'Module Clock')
+      configuration.module_no = configuration.module_no == module.id ? undefined: module.id;
+    else if (module.name == 'Module Weather')
+      configuration.module_ne = configuration.module_ne == module.id ? undefined: module.id;
+    else if (module.name == 'Module Feed')
+      configuration.module_so = configuration.module_so == module.id ? undefined: module.id;
+    else if (module.name == 'Module Calendar')
+      configuration.module_se = configuration.module_se == module.id ? undefined: module.id;
+  }
+
+  postUserConfiguration(type:string) {
+    let _configuration_template;
+
+    if (type == "global") {
+      _configuration_template = this.configuration_global;
+      _configuration_template.is_global = true;
+    }
+    else if (type == "individual") {
+      _configuration_template = this.configuration_individual;
+      _configuration_template.is_global = false;
+    }
+
+    _configuration_template.user_id = this.userProfile.id;
+    _configuration_template.module_ne_conf = {city: _configuration_template.module_ne_conf};
+
+    this.configurationService.postUserConfiguration(_configuration_template).then(result => {
+      this.template_global = false;
+      this.template_individual = false;
+      this.configuration_global = Object.assign({}, this.configuration_template);
+      this.configuration_individual = Object.assign({}, this.configuration_template);
+
+      this.getData();
+    });
+  }
+
+  deleteUserConfiguration(configurationId) {
+    this.configurationService.deleteUserConfiguration(configurationId).then(result => {this.getData()});
+  }
+
+  getData() {
     let promiseMirrors = this.mirrorService.getUserMirrors().then(result => this.mirrors = result);
     let promiseModules = this.modulesService.getModules().then(result => this.modules = result);
 
     Promise.all([promiseMirrors, promiseModules]).then(values => {
+      let _mirrors = [];
+
       this.configurationService.getUserConfigurations().then(
         result => {
           let _configurations = result;
           for (let configuration of _configurations) {
             configuration['mirror'] = this.mirrors.find(function(m) {return m.id == configuration.mirror_id});
-            configuration['module_ne'] = this.modules.find(function(m) {return m.id == configuration.module_ne});
-            configuration['module_se'] = this.modules.find(function(m) {return m.id == configuration.module_se});
-            configuration['module_so'] = this.modules.find(function(m) {return m.id == configuration.module_so});
             configuration['module_no'] = this.modules.find(function(m) {return m.id == configuration.module_no});
+            configuration['module_ne'] = this.modules.find(function(m) {return m.id == configuration.module_ne});
+            configuration['module_so'] = this.modules.find(function(m) {return m.id == configuration.module_so});
+            configuration['module_se'] = this.modules.find(function(m) {return m.id == configuration.module_se});
+
+            if (configuration.mirror)
+              _mirrors.push(configuration.mirror);
+
+            this.mirrors_availables = this.mirrors.filter( function(m) {
+              return _mirrors.indexOf(m) < 0;
+            });
           }
 
-          this.configurations.global = _configurations.find(function(c) {return c.is_global});
-          this.configurations.individual = _configurations.filter(c => !c.is_global);
-
-          if (!this.configurations.global) {
-            this.configurations.global = Object.assign({}, this.configuration_template);
-            this.configurations.global['is_global'] = true;
-          }
+          this.configuration.global = _configurations.filter(c => c.is_global);
+          this.configuration.individual = _configurations.filter(c => !c.is_global);
         }
       );
     });
   }
-
 }
