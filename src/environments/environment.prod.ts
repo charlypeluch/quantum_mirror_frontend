@@ -8,7 +8,7 @@ import { env } from './env';
 
 export const environment = {
   production: true,
-  serverUrl: 'localhost:3000/api',
+  serverUrl: 'http://node-express-env.smyfpeipzf.eu-west-1.elasticbeanstalk.com/api',
   version: env.version,
   defaultTheme: env.defaultTheme,
   supportedThemes: env.supportedThemes,
