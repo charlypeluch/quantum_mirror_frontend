@@ -44,10 +44,10 @@
         <form *ngIf="configuration.global.length > 0">
           <div fxFlex fxLayout="column" *ngFor="let global of configuration.global">
             <mat-form-field>
-              <input matInput value="{{ global.name }}" disabled="true" [placeholder]'="'Name' | translate">
+              <input matInput [(ngModel)]="global.name" [ngModelOptions]="{standalone: true}" disabled="true" [placeholder]="'Name' | translate">
             </mat-form-field>
             <mat-form-field>
-              <input matInput type="number" value="{{ global.session_expiration }}" disabled="true" [placeholder]'="'Expiration' | translate">
+              <input matInput [(ngModel)]="global.session_expiration" [ngModelOptions]="{standalone: true}" disabled="true" [placeholder]="'Expiration' | translate">
             </mat-form-field>
             <section fxFlex fxLayout="column" fxLayoutAlign="start start">
               <mat-checkbox [checked]="global.module_no" color="primary" disabled="true" translate>Module Clock</mat-checkbox>
@@ -131,13 +131,15 @@
             <div fxLayout="column">
               <div fxFlex fxLayout="column" *ngFor="let individual of configuration.individual">
                 <mat-form-field>
-                  <input matInput value="{{ individual.name }}" disabled="true" [placeholder]="'Name' | translate">
+                  <!-- <input matInput value="{{ individual.name }}" disabled="true" [placeholder]="'Name' | translate"> -->
+                  <input matInput [(ngModel)]="individual.name" [ngModelOptions]="{standalone: true}" disabled="true" [placeholder]="'Name' | translate">
                 </mat-form-field>
                 <mat-form-field>
-                  <input matInput value="{{ individual.mirror?.name }}" disabled="true" [placeholder]="'Mirror' | translate">
+                  <input matInput [(ngModel)]="individual.mirror.name" [ngModelOptions]="{standalone: true}" disabled="true" [placeholder]="'Mirror' | translate">
                 </mat-form-field>
                 <mat-form-field>
-                  <input matInput type="number" value="{{ individual.session_expiration }}" disabled="true" [placeholder]="'Expiration' | translate">
+                  <!-- <input matInput type="number" value="{{ individual.session_expiration }}" disabled="true" [placeholder]="'Expiration' | translate"> -->
+                  <input matInput [(ngModel)]="individual.session_expiration" [ngModelOptions]="{standalone: true}" disabled="true" [placeholder]="'Expiration' | translate">
                 </mat-form-field>
                 <section fxFlex fxLayout="column" fxLayoutAlign="start start">
                   <mat-checkbox [checked]="individual.module_no" color="primary" disabled="true" translate>Module Clock</mat-checkbox>
