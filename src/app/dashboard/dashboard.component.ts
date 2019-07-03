@@ -57,9 +57,11 @@ export class DashboardComponent implements OnInit {
     _dialog.afterClosed().subscribe(result => {
       this.dialogData.code = result;
 
-      this.mirrorService.assignUserMirror(result).then(
-        res => this.getMirrors()
-      );
+      if (result && result!= {}) {
+        this.mirrorService.assignUserMirror(result).then(
+          res => this.getMirrors()
+        );
+      }
     });
   }
 

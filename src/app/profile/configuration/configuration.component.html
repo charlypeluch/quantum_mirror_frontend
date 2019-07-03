@@ -94,7 +94,7 @@
           <p translate>The individual configuration is applicated in a mirror specifig</p>
         </div>
 
-        <!-- CREATE GLOBAL CONFIG -->
+        <!-- CREATE INDIVIDUAL CONFIG -->
         <form *ngIf="template_individual">
           <div fxFlex fxLayout="column">
             <mat-form-field>
@@ -126,7 +126,7 @@
           <br>
         </form>
 
-        <!-- LIST GLOBAL CONFIG -->
+        <!-- LIST INDIVIDUAL CONFIG -->
           <form *ngIf="configuration.individual.length > 0">
             <div fxLayout="column">
               <div fxFlex fxLayout="column" *ngFor="let individual of configuration.individual">

@@ -101,6 +101,8 @@ export class ConfigurationComponent implements OnInit {
       this.configurationService.getUserConfigurations().then(
         result => {
           let _configurations = result;
+          this.mirrors_availables = this.mirrors;
+          
           for (let configuration of _configurations) {
             configuration['mirror'] = this.mirrors.find(function(m) {return m.id == configuration.mirror_id});
             configuration['module_no'] = this.modules.find(function(m) {return m.id == configuration.module_no});
@@ -111,7 +113,7 @@ export class ConfigurationComponent implements OnInit {
             if (configuration.mirror)
               _mirrors.push(configuration.mirror);
 
-            this.mirrors_availables = this.mirrors.filter( function(m) {
+            this.mirrors_availables = this.mirrors.filter(function(m) {
               return _mirrors.indexOf(m) < 0;
             });
           }
